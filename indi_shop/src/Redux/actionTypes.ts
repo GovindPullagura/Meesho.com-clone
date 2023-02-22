@@ -1,0 +1,3 @@
+export const DATA_REQ: string = "DATA_REQ";
+export const DATA_FAIL: string = "DATA_FAIL";
+export const DATA_SUCCESS: string = "DATA_SUCCESS";
