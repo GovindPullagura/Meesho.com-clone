@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { Dispatch } from "react";
-import { product } from "../../constants";
+import { axiosObj, product } from "../../constants";
 import { DATA_FAIL, DATA_REQ, DATA_SUCCESS } from "../actionTypes";
 
 export const getReqAction = () => {
@@ -26,9 +26,18 @@ export const getWomenData = (dispatch: Dispatch<any>) => {
   axios
     .get(`https://indishop.onrender.com/women`)
     .then((res: AxiosResponse<product[]>) => {
-      console.log(res.data);
+      // console.log(res.data);
       dispatch(getReqSuccessAction(res.data));
     })
     .catch((err) => dispatch(getReqFailAction()));
 };
-// dispatch(getReqSuccessAction(res.data))
+
+export const getMenData = (dispatch: Dispatch<any>) => {
+  dispatch(getReqAction());
+  axios
+    .get(`https://indishop.onrender.com/men`)
+    .then((res: AxiosResponse<product[]>) =>
+      dispatch(getReqSuccessAction(res.data))
+    )
+    .catch((err) => dispatch(getReqFailAction()));
+};

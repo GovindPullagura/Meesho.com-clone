@@ -21,3 +21,10 @@ export type initData = {
 export type state = {
   womenData: initData;
 };
+
+export type paramsObj = {
+  category: string[] | [];
+};
+export type axiosObj = {
+  params: paramsObj;
+};
