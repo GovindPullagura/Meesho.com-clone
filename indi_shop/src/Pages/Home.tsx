@@ -88,5 +88,4 @@ const Home = () => {
     <Footer/>
   </div>;
 };
-
-export default Home;
+export default Home
