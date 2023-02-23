@@ -1,5 +1,5 @@
 import { initData, ReducerAction } from "../../constants";
-import { DATA_FAIL, DATA_REQ, DATA_SUCCESS } from "../actionTypes";
+import { DATA_FAIL, DATA_REQ, DATA_SUCCESS } from "./actionTypes";
 
 const womenData: initData = { isLoading: false, isError: false, products: [] };
 

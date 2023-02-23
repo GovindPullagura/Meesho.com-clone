@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { Dispatch } from "react";
 import { axiosObj, product } from "../../constants";
-import { DATA_FAIL, DATA_REQ, DATA_SUCCESS } from "../actionTypes";
+import { DATA_FAIL, DATA_REQ, DATA_SUCCESS } from "./actionTypes";
 
 export const getReqAction = () => {
   return { type: DATA_REQ };
