@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import { AdminHome } from "../Admin/Pages/AdminHome/AdminHome";
 import BoysPage from "../Pages/BoysPage";
 import CartPage from "../Pages/CartPage";
 import CheckoutPage from "../Pages/CheckoutPage";
@@ -24,6 +25,8 @@ const AllRoutes = () => {
       <Route path="/cart" element={<CartPage />} />
       <Route path="/checkout" element={<CheckoutPage />} />
       <Route path="/productDetails/:id" element={<SingleProductPage />} />
+      <Route path="/checkout" element={<CheckoutPage />} />
+      <Route path="/admin/*" element={<AdminHome />} />
     </Routes>
   );
 };
