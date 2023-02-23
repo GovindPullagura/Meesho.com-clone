@@ -596,5 +596,32 @@
       "size": "Xl",
       "colour": "Pink"
     }
+  ],
+  "register": [
+    {
+      "frist_name": "manju",
+      "last_name": "sai",
+      "email": "manjusai083@gmail.com",
+      "password": "a1b2c3"
+    }
+  ],
+  "login": [
+    {
+      "email": "manjusai083@gmail.com",
+      "password": "a1b2c3"
+    }
+  ],
+  "user": [
+    {
+      "frist_name": "manju",
+      "last_name": "sai",
+      "email": "manjusai083@gmail.com",
+      "password": ""
+    }
+  ],
+  "logout": [
+    {
+      "message": "success"
+    }
   ]
 }
