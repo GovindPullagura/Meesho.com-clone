@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { Dispatch } from "react";
 import { axiosObj, product } from "../../constants";
-import { DATA_FAIL, DATA_REQ, DATA_SUCCESS } from "./actionTypes";
+import { ADD_TO_CART, DATA_FAIL, DATA_REQ, DATA_SUCCESS } from "./actionTypes";
 
 export const getReqAction = () => {
   return { type: DATA_REQ };
@@ -15,20 +15,33 @@ export const getReqSuccessAction = (payload: product[]) => {
   return { type: DATA_SUCCESS, payload };
 };
 
+export const addToCartAction = () => {
+  return { type: ADD_TO_CART };
+};
+
 // export const getWomenData = async () => {
 //   let res: AxiosResponse<product[]> = await axios.get(
 //     `https://indishop.onrender.com/women`
 //   );
 //   return res.data;
 // };
-export const getWomenData = (dispatch: Dispatch<any>) => {
+export const getWomenData = (params: axiosObj) => (dispatch: Dispatch<any>) => {
+  console.log(params);
   dispatch(getReqAction());
   axios
-    .get(`https://indishop.onrender.com/women`)
+    .get(`https://indishop.onrender.com/women`, params)
     .then((res: AxiosResponse<product[]>) => {
-      // console.log(res.data);
+      console.log(res.data);
       dispatch(getReqSuccessAction(res.data));
     })
+    .catch((err) => dispatch(getReqFailAction()));
+};
+
+export const addToCart = (data: product) => (dispatch: Dispatch<any>) => {
+  dispatch(getReqAction());
+  axios
+    .post(`https://indishop.onrender.com/cart`, data)
+    .then((res) => dispatch(addToCartAction()))
     .catch((err) => dispatch(getReqFailAction()));
 };
 

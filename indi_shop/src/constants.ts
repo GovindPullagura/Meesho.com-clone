@@ -23,7 +23,19 @@ export type state = {
 };
 
 export type paramsObj = {
+  colour: string[] | [];
   category: string[] | [];
+  size: string[] | [];
+  brand: string[] | [];
+  _sort?: string | null;
+  _order?: string | null;
+};
+export type effectParams = {
+  colour: string[] | [];
+  category: string[] | [];
+  size: string[] | [];
+  brand: string[] | [];
+  order?: string;
 };
 export type axiosObj = {
   params: paramsObj;

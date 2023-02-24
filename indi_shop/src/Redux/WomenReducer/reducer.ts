@@ -1,5 +1,5 @@
 import { initData, ReducerAction } from "../../constants";
-import { DATA_FAIL, DATA_REQ, DATA_SUCCESS } from "./actionTypes";
+import { ADD_TO_CART, DATA_FAIL, DATA_REQ, DATA_SUCCESS } from "./actionTypes";
 
 const womenData: initData = { isLoading: false, isError: false, products: [] };
 
@@ -14,6 +14,9 @@ export const reducer = (
       return { ...state, isLoading: true };
     case DATA_SUCCESS:
       return { ...state, products: payload, isLoading: false };
+
+    case ADD_TO_CART:
+      return { ...state, isLoading: false };
     default:
       return state;
   }
