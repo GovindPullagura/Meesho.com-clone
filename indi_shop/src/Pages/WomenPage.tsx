@@ -34,7 +34,7 @@ const WomenPage = () => {
   const [colour, setColour] = useState<string[]>(initState || []);
 
   const initSize: string[] = searchParams.getAll("size");
-  const [size, setSize] = useState<string[]>(initState || []);
+  const [size, setSize] = useState<string[]>(initSize || []);
 
   const initBrand: string[] = searchParams.getAll("brand");
   const [brand, setBrand] = useState<string[]>(initBrand || []);
@@ -116,6 +116,7 @@ const WomenPage = () => {
 
   const handleAdd = (data: product) => {
     dispatch(addToCart(data));
+    // console.log("ADd");
   };
 
   return (

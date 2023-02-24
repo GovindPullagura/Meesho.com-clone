@@ -7,7 +7,8 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 import { product } from "../constants";
 
 interface cartProduct extends product {
@@ -24,17 +25,27 @@ const ProductCard = ({
   size,
   rating,
   category,
+  gender,
   handleAdd,
 }: cartProduct) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    handleAdd();
+  };
   return (
     // maxW="sm" p="1%" h="500px"
+
     <Card
       h={{ base: "250px", md: "300px", lg: "400px" }}
       key={id}
       p="1%"
       alignItems={"center"}
     >
-      <Image h="60%" src={image} alt={brand} borderRadius="lg" />
+      <Link
+        style={{ alignItems: "center", height: "60%" }}
+        to={`/productDetails/${gender}/${id}`}
+      >
+        <Image h="100%" src={image} alt={brand} borderRadius="lg" />
+      </Link>
       <Flex direction={"column"}>
         <Heading size={{ base: "xs", md: "s", lg: "md" }}>{brand}</Heading>
         <Text fontSize={{ base: "8px", md: "12px", lg: "15px" }}>
@@ -61,10 +72,7 @@ const ProductCard = ({
         m="auto"
         mb="5px"
         colorScheme="blue"
-        onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-          e.preventDefault();
-          handleAdd();
-        }}
+        onClick={handleClick}
       >
         Add to cart
       </Button>

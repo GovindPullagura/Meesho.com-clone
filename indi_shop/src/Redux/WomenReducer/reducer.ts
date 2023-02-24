@@ -1,7 +1,11 @@
 import { initData, ReducerAction } from "../../constants";
 import { ADD_TO_CART, DATA_FAIL, DATA_REQ, DATA_SUCCESS } from "./actionTypes";
 
-const womenData: initData = { isLoading: false, isError: false, products: [] };
+const womenData: initData = {
+  isLoading: false,
+  isError: false,
+  products: [],
+};
 
 export const reducer = (
   state = womenData,

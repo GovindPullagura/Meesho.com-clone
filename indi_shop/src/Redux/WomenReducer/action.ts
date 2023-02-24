@@ -37,20 +37,20 @@ export const getWomenData = (params: axiosObj) => (dispatch: Dispatch<any>) => {
     .catch((err) => dispatch(getReqFailAction()));
 };
 
-export const addToCart = (data: product) => (dispatch: Dispatch<any>) => {
+export const getMenData = (params: axiosObj) => (dispatch: Dispatch<any>) => {
   dispatch(getReqAction());
   axios
-    .post(`https://indishop.onrender.com/cart`, data)
-    .then((res) => dispatch(addToCartAction()))
-    .catch((err) => dispatch(getReqFailAction()));
-};
-
-export const getMenData = (dispatch: Dispatch<any>) => {
-  dispatch(getReqAction());
-  axios
-    .get(`https://indishop.onrender.com/men`)
+    .get(`https://indishop.onrender.com/men`, params)
     .then((res: AxiosResponse<product[]>) =>
       dispatch(getReqSuccessAction(res.data))
     )
+    .catch((err) => dispatch(getReqFailAction()));
+};
+
+export const addToCart = (data: product) => (dispatch: Dispatch<any>) => {
+  // dispatch(getReqAction());
+  axios
+    .post(`https://indishop.onrender.com/cart`, data)
+    .then((res) => dispatch(addToCartAction()))
     .catch((err) => dispatch(getReqFailAction()));
 };

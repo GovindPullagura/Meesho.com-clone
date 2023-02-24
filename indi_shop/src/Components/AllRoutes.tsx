@@ -6,9 +6,9 @@ import CartPage from "../Pages/CartPage";
 import CheckoutPage from "../Pages/CheckoutPage";
 import GirlsPage from "../Pages/GirlsPage";
 import Home from "../Pages/Home";
-import { LoginPage } from "../Pages/LoginPage";
+import LoginPage from "../Pages/LoginPage";
 import MenPage from "../Pages/MenPage";
-import SignUpPage from "../Pages/SignUpPage"
+import SignUpPage from "../Pages/SignUpPage";
 import SingleProductPage from "../Pages/SingleProductPage";
 import WomenPage from "../Pages/WomenPage";
 
@@ -24,7 +24,10 @@ const AllRoutes = () => {
       <Route path="/girlsPage" element={<GirlsPage />} />
       <Route path="/cart" element={<CartPage />} />
       <Route path="/checkout" element={<CheckoutPage />} />
-      <Route path="/productDetails/:id" element={<SingleProductPage />} />
+      <Route
+        path="/productDetails/:gender/:id"
+        element={<SingleProductPage />}
+      />
       <Route path="/checkout" element={<CheckoutPage />} />
       <Route path="/admin/*" element={<AdminHome />} />
     </Routes>
