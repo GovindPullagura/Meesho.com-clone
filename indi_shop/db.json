@@ -597,26 +597,82 @@
       "colour": "Pink"
     }
   ],
-  "register": [
-    {
-      "frist_name": "manju",
-      "last_name": "sai",
-      "email": "manjusai083@gmail.com",
-      "password": "a1b2c3"
-    }
-  ],
-  "login": [
-    {
-      "email": "manjusai083@gmail.com",
-      "password": "a1b2c3"
-    }
-  ],
   "user": [
     {
       "frist_name": "manju",
       "last_name": "sai",
       "email": "manjusai083@gmail.com",
       "password": ""
+    },
+    {
+      "id": 1677236043503,
+      "frist_name": "Govind",
+      "last_name": "Pullagura",
+      "email": "govind@gmail.com",
+      "password": "654321"
+    },
+    {
+      "id": 1677242276298,
+      "frist_name": "manju",
+      "last_name": "Sai",
+      "email": "manju@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": 1677242365672,
+      "frist_name": "manju",
+      "last_name": "Sai",
+      "email": "ram12345@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": 1677242497168,
+      "frist_name": "",
+      "last_name": "",
+      "email": "",
+      "password": ""
+    },
+    {
+      "id": 1677242607882,
+      "frist_name": "",
+      "last_name": "",
+      "email": "",
+      "password": ""
+    },
+    {
+      "id": 1677242631737,
+      "frist_name": "manju",
+      "last_name": "Sai",
+      "email": "ram12345@gmail.com",
+      "password": "654321"
+    },
+    {
+      "id": 1677243100937,
+      "frist_name": "",
+      "last_name": "",
+      "email": "",
+      "password": ""
+    },
+    {
+      "id": 1677243185970,
+      "frist_name": "manju",
+      "last_name": "Sai",
+      "email": "manjusai9014@gmail.com",
+      "password": "1245848"
+    },
+    {
+      "id": 1677243809383,
+      "frist_name": "manju",
+      "last_name": "Sai",
+      "email": "manjusai083@gmail.com",
+      "password": "789456"
+    },
+    {
+      "id": 1677245675139,
+      "frist_name": "manju",
+      "last_name": "Sai",
+      "email": "manjusai1432@gmail.com",
+      "password": "123789"
     }
   ],
   "logout": [
