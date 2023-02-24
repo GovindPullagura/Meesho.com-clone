@@ -20,6 +20,7 @@ export type initData = {
 
 export type state = {
   womenData: initData;
+  allProductData:initData;
 };
 
 export type paramsObj = {
