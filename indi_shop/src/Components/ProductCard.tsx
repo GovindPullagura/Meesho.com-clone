@@ -8,8 +8,10 @@ import {
   Text,
 } from "@chakra-ui/react";
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { product } from "../constants";
+import { initData, product, state } from "../constants";
+import { AiFillStar } from "react-icons/ai";
 
 interface cartProduct extends product {
   handleAdd: () => void;
@@ -46,7 +48,7 @@ const ProductCard = ({
       >
         <Image h="100%" src={image} alt={brand} borderRadius="lg" />
       </Link>
-      <Flex direction={"column"}>
+      <Flex direction={"column"} alignItems="center">
         <Heading size={{ base: "xs", md: "s", lg: "md" }}>{brand}</Heading>
         <Text fontSize={{ base: "8px", md: "12px", lg: "15px" }}>
           {description}
@@ -59,19 +61,23 @@ const ProductCard = ({
         >
           Rs. {price}
         </Text>
-        <Text fontSize={{ base: "8px", md: "12px", lg: "15px" }}>
-          Rating: {rating}
-        </Text>
+        <Flex alignItems="center">
+          <Text fontSize={{ base: "8px", md: "12px", lg: "15px" }}>
+            Rating: {rating}
+          </Text>
+          <AiFillStar />
+        </Flex>
       </Flex>
       {/* <Divider /> */}
       {/* <CardFooter> */}
+
       <Button
         w={{ base: "30%", md: "50%" }}
         h={{ base: "20px", md: "25px", lg: "30px" }}
         fontSize={{ base: "10px", md: "14px", lg: "17px" }}
         m="auto"
         mb="5px"
-        colorScheme="blue"
+        colorScheme="pink"
         onClick={handleClick}
       >
         Add to cart

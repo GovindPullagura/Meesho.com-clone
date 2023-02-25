@@ -9,12 +9,15 @@ import {
   Text,
 } from "@chakra-ui/react";
 import axios, { AxiosResponse } from "axios";
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { product, state } from "../constants";
 import { AiFillStar } from "react-icons/ai";
+import { addToCart } from "../Redux/WomenReducer/action";
+import { useDispatch } from "react-redux";
 
 const SingleProductPage = () => {
+  const dispatch: Dispatch<any> = useDispatch();
   const params = useParams();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
@@ -25,7 +28,6 @@ const SingleProductPage = () => {
     return axios(`https://indishop.onrender.com/${gender}/${id}`);
   };
 
-  console.log(product);
   useEffect(() => {
     setIsLoading(true);
     getData(params.id, params.gender)
@@ -35,6 +37,10 @@ const SingleProductPage = () => {
       .catch((err) => setIsError(true))
       .finally(() => setIsLoading(false));
   }, []);
+
+  const handleAdd = (data: product) => {
+    dispatch(addToCart(data));
+  };
 
   return (
     <Box>
@@ -122,9 +128,11 @@ const SingleProductPage = () => {
                   w="100%"
                   borderRadius={"10px"}
                   mt={{ base: "20px", lg: "40px" }}
-                  color={"white"}
-                  bgColor={"rgb(239,78,40)"}
-                  _hover={{ bgColor: "rgb(229,68,20)" }}
+                  // color={"white"}
+                  colorScheme="pink"
+                  // bgColor={"rgb(238,100,166)"}
+                  // _hover={{ bgColor: "rgb(218,80,146)" }}
+                  onClick={() => handleAdd(item)}
                 >
                   Add to Cart
                 </Button>
