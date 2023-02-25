@@ -7,7 +7,6 @@ import {
   FormLabel,
   Input,
   InputGroup,
-  HStack,
   InputRightElement,
   Stack,
   Button,
@@ -17,10 +16,53 @@ import {
 } from "@chakra-ui/react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useToast } from '@chakra-ui/react'
+
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const toast = useToast()
+
+  const handleSubmit = () => {
+    let obj = {
+      email: email,
+      password: password
+    }
+    axios
+      .get(`https://indishop.onrender.com/users`)
+      .then((r) => {
+        let data = r.data;
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].email === email && data[i].password === password) {
+            toast({
+              title: 'Login Successfull.',
+              status: 'success',
+              duration: 4000,
+              isClosable: true,
+            })
+            localStorage.setItem("user", JSON.stringify(data[i]));
+            navigate("/")
+            return;
+          }
+        }
+        toast({
+          title: 'Login Failed  Please Sign Up.',
+          status: 'error',
+          duration: 4000,
+          isClosable: true,
+        })
+        navigate("/signup")
+      })
+      .catch((e) => {
+        console.log(e);
+        alert("error");
+      })
+  }
 
   return (
     <Box>
@@ -49,28 +91,14 @@ export default function LoginPage() {
                 </Text>
               </Stack>
               <Stack spacing={3}>
-                <HStack>
-                  <Box>
-                    <FormControl id="firstName" isRequired>
-                      <FormLabel>First Name</FormLabel>
-                      <Input type="text" />
-                    </FormControl>
-                  </Box>
-                  <Box>
-                    <FormControl id="lastName">
-                      <FormLabel>Last Name</FormLabel>
-                      <Input type="text" />
-                    </FormControl>
-                  </Box>
-                </HStack>
                 <FormControl id="email" isRequired>
                   <FormLabel>Email address</FormLabel>
-                  <Input type="email" />
+                  <Input type="email" onChange={(e) => setEmail(e.target.value)} value={email} name="email" />
                 </FormControl>
                 <FormControl id="password" isRequired>
                   <FormLabel>Password</FormLabel>
                   <InputGroup>
-                    <Input type={showPassword ? "text" : "password"} />
+                    <Input type={showPassword ? "text" : "password"} onChange={(e) => setPassword(e.target.value)} value={password} name="password" />
                     <InputRightElement h={"full"}>
                       <Button
                         variant={"ghost"}
@@ -93,6 +121,7 @@ export default function LoginPage() {
                       bg: "#f43397",
                       color: "black",
                     }}
+                    onClick={handleSubmit}
                   >
                     Log in
                   </Button>

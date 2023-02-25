@@ -1,110 +1,118 @@
 import { Link } from "react-router-dom";
-import {
-  Box, Image, Input, HStack, InputGroup, InputLeftElement, Button, Text, VStack, StackDivider, Popover, PopoverTrigger, Portal, PopoverContent, PopoverBody, Wrap, WrapItem, Grid
-} from '@chakra-ui/react';
+import { Box, Image, Input, HStack, InputGroup, InputLeftElement, Button, Text, VStack, StackDivider, Popover, PopoverTrigger, PopoverContent, PopoverBody, Wrap, WrapItem, Grid } from '@chakra-ui/react';
 import { CiSearch } from 'react-icons/ci';
 import { TfiMobile } from 'react-icons/tfi';
 import { IoPersonOutline, IoLogOutOutline } from 'react-icons/io5';
 import { BsCart, BsApple, BsPersonCircle } from 'react-icons/bs';
 import { SlBag } from 'react-icons/sl';
+import { GrUserAdmin } from 'react-icons/gr';
+import React, { useState } from "react";
 
 const Navbar = () => {
+  const [search, setSearch]=useState('');
+
+  const handleSearch=(e:React.ChangeEvent<HTMLInputElement>)=>{
+    console.log(e.target.value);
+    setSearch(e.target.value);
+  }
+
   return <Box position={'sticky'} top={'0%'} bg={'white'} zIndex='999'>
-    <HStack height='90px' boxShadow='rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;' spacing={'10'} textAlign='center' justifyContent='center'>
-      <Link to={"/"}><Image src="./Indishop_logo.png" alt='logo' width='150px' /></Link>
-      <InputGroup width='500px'>
-        <Input type='text' placeholder='Try Saree, Kurti' id='search' h='50px' />
+    <HStack height='70px' boxShadow='rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;' spacing={'10'} textAlign='center' justifyContent='center'>
+      <Link to={"/"}><Image src="./Indishop_logo.png" alt='logo' width='130px' /></Link>
+      <InputGroup width='400px'>
+        <Input type='text' placeholder='Try Saree, Kurti' id='search' h='40px' onChange={(e)=>handleSearch(e)}/>
         <InputLeftElement>
-          <CiSearch size={'40px'} color='#707070' />
+          <CiSearch size={'30px'} color='#707070' />
         </InputLeftElement>
       </InputGroup>
-      <HStack divider={<StackDivider borderColor='gray.200' />}>
+      <HStack divider={<StackDivider borderColor='gray.200' h='70px'/>}>
         <Popover trigger={'hover'}>
           <PopoverTrigger>
-            <Button colorScheme='none' color='black' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='90px' fontSize='18px'><TfiMobile />Download App</Button>
+            <Button colorScheme='none' color='black' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='70px' fontSize='15px'><TfiMobile />Download App</Button>
           </PopoverTrigger>
-          <Portal>
-            <PopoverContent p={4} w='255px' m={'-8px 0 0 0'}>
+            <PopoverContent p={4} w='220px' m={'-8px 0 0 0'}>
               <PopoverBody>
-                <Text fontSize='20px' >Download From a</Text>
-                <Button colorScheme='none' bg='black' color='white' w='200px' h='50px' m={'25px 0'}>
-                  <Image src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAcCAYAAAB75n/uAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAJqSURBVHgBrZRPaxNBGMbfmd1oG+KfFBGpCBtBUPBgoB49BEzxpNSLx/YqXhJtTxqr/QLJfoKkX0ByEaQVDEIpAUtKBS2I3VgjWGLcEJq02Sb7OrNlY5pskk12H1hmdt6Z5zfz7B8yr6wt3vQUIyFvPq8TnAn4o3lwUWR+Zw1558apPxD2KgAIqSbF126BqNn5ql2A7OFlhoQ5AcmHgirPggui7TfZw8ljCICkI6Z2/yYURY3fAgeinQNtEAPETpPbLSWSDCSBGwALSCu2H6V4BNwAmJDN+qX2IYkQEuex/VLlB+AUwPXx4Irx8DskNRHTdmOjgyas1gJWEDO23E9VXgQnABNSaJyxKp1HxFc8NlV5MjsygOtt9RoUm17L2lhtT/KVv6UauXASc/ekkQB1FODN/vUuiEerwLnSltFHIHMN0JWj3HQrttavwq7O0jo89G2zVjPMJ/ayQPWjrnkEIM+aqO0TmKrop42TVLUm+IsbluZcbNcSu5JDA7iECsDFtG60/cROUR4a4N+vw+P3X2CiSEFYvw1QG+8xEzMC0NBQANPcX60f7/BgvAvCs2fXjCe4GiLBd3nbgDGtccK8Zcghn4IADQ/ftSyAFhSDK2mzLjoxb0Eqvoy4cjdKnkc3O2u2ANx8Uq1ZlcrMPkJiz5Z7rR0Y0aP17z3MUYYmDZDY0+V+68VB5lM7xU7jDFDBMo6hANNbhU5zlcUR7ReHlWgv8/DngnnLPkhMsDiuDorDSmIfczTiAFwisYUMjCixh7kKRF8iLxYS4FAUjVcN4M72b27+Pw4XzLlEgro8pZRe3t9QMk7jsNI/SVwmYkYExSAAAAAASUVORK5CYII=' bg='black' marginRight={'10px'} />
+                <Text fontSize='15px' >Download From a</Text>
+                <Button colorScheme='none' bg='black' color='white' w='170px' h='45px' m={'20px 0'}>
+                  <Image src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAcCAYAAAB75n/uAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAJqSURBVHgBrZRPaxNBGMbfmd1oG+KfFBGpCBtBUPBgoB49BEzxpNSLx/YqXhJtTxqr/QLJfoKkX0ByEaQVDEIpAUtKBS2I3VgjWGLcEJq02Sb7OrNlY5pskk12H1hmdt6Z5zfz7B8yr6wt3vQUIyFvPq8TnAn4o3lwUWR+Zw1558apPxD2KgAIqSbF126BqNn5ql2A7OFlhoQ5AcmHgirPggui7TfZw8ljCICkI6Z2/yYURY3fAgeinQNtEAPETpPbLSWSDCSBGwALSCu2H6V4BNwAmJDN+qX2IYkQEuex/VLlB+AUwPXx4Irx8DskNRHTdmOjgyas1gJWEDO23E9VXgQnABNSaJyxKp1HxFc8NlV5MjsygOtt9RoUm17L2lhtT/KVv6UauXASc/ekkQB1FODN/vUuiEerwLnSltFHIHMN0JWj3HQrttavwq7O0jo89G2zVjPMJ/ayQPWjrnkEIM+aqO0TmKrop42TVLUm+IsbluZcbNcSu5JDA7iECsDFtG60/cROUR4a4N+vw+P3X2CiSEFYvw1QG+8xEzMC0NBQANPcX60f7/BgvAvCs2fXjCe4GiLBd3nbgDGtccK8Zcghn4IADQ/ftSyAFhSDK2mzLjoxb0Eqvoy4cjdKnkc3O2u2ANx8Uq1ZlcrMPkJiz5Z7rR0Y0aP17z3MUYYmDZDY0+V+68VB5lM7xU7jDFDBMo6hANNbhU5zlcUR7ReHlWgv8/DngnnLPkhMsDiuDorDSmIfczTiAFwisYUMjCixh7kKRF8iLxYS4FAUjVcN4M72b27+Pw4XzLlEgro8pZRe3t9QMk7jsNI/SVwmYkYExSAAAAAASUVORK5CYII=' bg='black' marginRight={'10px'}/>
                   <VStack lineHeight='7px'>
-                    <Text fontSize='10px' m={'0 60px 0 0'}>GET IT ON</Text>
-                    <Text fontSize='20px'>Google Play</Text>
+                    <Text fontSize='8px' m={'0 43px 0 0'}>GET IT ON</Text>
+                    <Text fontSize='15px'>Google Play</Text>
                   </VStack>
                 </Button>
-                <Button colorScheme='none' bg='black' color='white' w='200px' h='50px' >
+                <Button colorScheme='none' bg='black' color='white' w='170px' h='45px'>
                   <BsApple color='white' size={25} />
                   <VStack lineHeight='7px'>
-                    <Text fontSize='10px' m={'0 15px 0 0'}>Available on the</Text>
-                    <Text fontSize='20px'>App Store</Text>
+                    <Text fontSize='8px' m={'0 13px 0 0'}>Available on the</Text>
+                    <Text fontSize='15px'>App Store</Text>
                   </VStack>
                 </Button>
               </PopoverBody>
             </PopoverContent>
-          </Portal>
         </Popover>
 
-        <Button colorScheme='none' color='black' fontSize='18px'>Become a Supplier</Button>
+        <Button colorScheme='none' color='black' fontSize='15px'>Become a Supplier</Button>
 
         <Popover trigger={'hover'}>
           <PopoverTrigger>
-            <Button colorScheme='none' color='black' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='90px' fontSize='18px'><IoPersonOutline />Profile</Button>
+            <Button colorScheme='none' color='black' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='70px' fontSize='15px'><IoPersonOutline />Profile</Button>
           </PopoverTrigger>
           <PopoverContent w='fit' m={'-8px 0 0 0'}>
             <PopoverBody>
-              {/* <VStack divider={<StackDivider borderColor='gray.200' />} align='left'>
+               {/* <VStack divider={<StackDivider borderColor='gray.200' />} align='left'>
               <HStack>
-                <BsPersonCircle size='50px' color='#e4edff'/>
+                <BsPersonCircle size='35px' color='#e4edff'/>
                 <Box>
-                  <Text as='b' fontSize='20px'>Hello User</Text>
+                  <Text as='b' fontSize='15px'>Hello User</Text>
                   <Text>+91 xxxxxxxxxx</Text>
                 </Box>
               </HStack>
-              <Button colorScheme='none' color='black' m={'0 100px 0 0'} p={0}>
+              <Button colorScheme='none' color='black' m={'0 55px 0 0'} p={0}>
                 <SlBag />
-                <Text fontSize='20px' p='0 0 0 15px'>My Orders</Text>
+                <Text fontSize='15px' p='0 0 0 15px'>My Orders</Text>
               </Button>
-              <Button colorScheme='none' color='black' m={'0 100px 0 0'} p={0}>
-                <IoLogOutOutline size='30px'/>
-                <Text fontSize='20px' p='0 30px 0 9px'>Logout</Text>
+              <Button colorScheme='none' color='black' m={'0 75px 0 0'} p={0}>
+                <GrUserAdmin />
+                <Text fontSize='15px' p='0 0 0 13px'><Link to='/admin'>Admin</Link></Text>
               </Button>
-            </VStack> */}
+              <Button colorScheme='none' color='black' m={'0 50px 0 0'} p={0}>
+                <IoLogOutOutline size='20px'/>
+                <Text fontSize='15px' p='0 30px 0 10px'>Logout</Text>
+              </Button>
+              </VStack>  */}
               <VStack divider={<StackDivider borderColor='gray.200' />} textAlign='left' p={2}>
                 <HStack>
                   <Box>
-                    <Text as='b' fontSize='20px'>Hello User</Text>
-                    <Text>To access your Meesho account</Text>
+                    <Text as='b' fontSize='15px'>Hello User</Text>
+                    <Text fontSize='10px'>To access your Meesho account</Text>
                     <br />
-                    <Button colorScheme='none' bg={'#f43397'} color='white' w='100%' fontSize='20px' h='50px'><Link to='/signup'>Sign Up</Link></Button>
+                    <Button colorScheme='none' bg={'#f43397'} color='white' w='100%' fontSize='15px' h='40px'><Link to='/signup'>Sign Up</Link></Button>
                   </Box>
                 </HStack>
-                <Button colorScheme='none' color='black' m={'0 100px 0 0'} p={0}>
+                <Button colorScheme='none' color='black' m={'0 50px 0 0'} p={0}>
                   <SlBag />
-                  <Text fontSize='20px' p='0 0 0 15px'>My Orders</Text>
+                  <Text fontSize='15px' p='0 0 0 15px'>My Orders</Text>
                 </Button>
               </VStack>
             </PopoverBody>
           </PopoverContent>
         </Popover>
 
-        <Button colorScheme='none' color='black' fontSize='18px'><BsCart />Cart</Button></HStack>
+        <Button colorScheme='none' color='black' fontSize='15px'><Link to='/cart'><BsCart />Cart</Link></Button></HStack>
     </HStack>
-    <HStack height='70px' boxShadow='rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;' textAlign='center' justifyContent='center'>
+    <HStack height='50px' boxShadow='rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;'  justifyContent='center'>
       <Wrap spacing={'5'}>
         <WrapItem>
           <Popover trigger={'hover'}>
             <PopoverTrigger>
-              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='70px' fontSize='18px'>Women Ethnic</Button>
+              <Button colorScheme='none' color='black'  borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='50px' fontSize='15px'><Link to='/womenPage'>Women Ethnic</Link></Button>
             </PopoverTrigger>
-            <Portal>
-              <PopoverContent w={'100%'} fontSize={'xl'} m={'-8px 0 0 0'}>
-                <PopoverBody p='0' lineHeight='40px'>
-                  <Grid templateColumns='repeat(6, auto)'>
-                    <VStack p={2} align='left'>
-                      <Text as='b' color='#f43397' m='10px 0'>All Women Ethnic</Text>
-                      <Text>View All</Text>
+              <PopoverContent w={'100%'} m={'-8px 0 0 0'}>
+                <PopoverBody p='0' lineHeight='30px' textAlign='left'fontSize={'15px'}>
+                  <Grid templateColumns='repeat(6, auto)' >
+                    <VStack p={2}>
+                      <Text as='b' color='#f43397' m='10px'>All Women Ethnic</Text>
+                      <Text><Link to='/womenPage'>View All</Link></Text>
                     </VStack>
                     <VStack bg={'#f9f9f9'} p={2} align='left'>
                       <Text as='b' color='#f43397' m='10px 0'>Sarees</Text>
@@ -147,17 +155,15 @@ const Navbar = () => {
                   </Grid>
                 </PopoverBody>
               </PopoverContent>
-            </Portal>
           </Popover>
         </WrapItem>
         <WrapItem >
           <Popover trigger={'hover'}>
             <PopoverTrigger>
-              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='70px' fontSize='18px'>Women Western</Button>
+              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='50px' fontSize='15px'><Link to='/womenPage'>Women Western</Link></Button>
             </PopoverTrigger>
-            <Portal>
-              <PopoverContent w={'100%'} fontSize={'xl'} m={'-8px 0 0 0'}>
-                <PopoverBody p='0' lineHeight='40px'>
+              <PopoverContent w={'100%'} m={'-8px 0 0 0'}>
+                <PopoverBody p='0' lineHeight='30px' textAlign='left'fontSize={'15px'}>
                   <Grid templateColumns='repeat(6, auto)'>
                     <VStack p={2} align='left'>
                       <Text as='b' color='#f43397' m='10px 0'>Topwear</Text>
@@ -187,17 +193,15 @@ const Navbar = () => {
                   </Grid>
                 </PopoverBody>
               </PopoverContent>
-            </Portal>
           </Popover>
         </WrapItem>
         <WrapItem >
           <Popover trigger={'hover'}>
             <PopoverTrigger>
-              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='70px' fontSize='18px'>Men</Button>
+              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='50px' fontSize='15px'><Link to='/menPage'>Men</Link></Button>
             </PopoverTrigger>
-            <Portal>
-              <PopoverContent w={'100%'} fontSize={'xl'} m={'-8px 0 0 0'}>
-                <PopoverBody p='0' lineHeight='40px'>
+              <PopoverContent w={'100%'} m={'-8px 0 0 0'}>
+                <PopoverBody p='0' lineHeight='30px' textAlign='left'fontSize={'15px'}>
                   <Grid templateColumns='repeat(6, auto)'>
                     <VStack p={2} align='left'>
                       <Text as='b' color='#f43397' m='10px 0'>Top Wear</Text>
@@ -241,20 +245,51 @@ const Navbar = () => {
                   </Grid>
                 </PopoverBody>
               </PopoverContent>
-            </Portal>
           </Popover>
         </WrapItem>
         <WrapItem >
           <Popover trigger={'hover'}>
             <PopoverTrigger>
-              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='70px' fontSize='18px'>Kids</Button>
+              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='50px' fontSize='15px'><Link to='boysPage'>Boys</Link></Button>
             </PopoverTrigger>
-            <Portal>
-              <PopoverContent w={'100%'} fontSize={'xl'} m={'-8px 0 0 0'}>
-                <PopoverBody p='0' lineHeight='40px'>
+              <PopoverContent w={'100%'} m={'-8px 0 0 0'}>
+                <PopoverBody p='0' lineHeight='30px' textAlign='left'fontSize={'15px'}>
                   <Grid templateColumns='repeat(6, auto)' >
                     <VStack p={2} align='left'>
-                      <Text as='b' color='#f43397' m='10px 0'>Boys & Girls 2+ Years</Text>
+                      <Text as='b' color='#f43397' m='10px 0'>Boys 2+ Years</Text>
+                      <Text>Not Dresses</Text>
+                    </VStack>
+                    <VStack bg={'#f9f9f9'} p={2} align='left'>
+                      <Text as='b' color='#f43397' m='10px 0'>Infant 0-2 Years</Text>
+                      <Text>Rompers</Text>
+                    </VStack>
+                    <VStack p={2} align='left'>
+                      <Text as='b' color='#f43397' m='10px 0'>Toys & Accessories</Text>
+                      <Text>Soft Toys</Text>
+                      <Text>Footwear</Text>
+                      <Text>Stationary</Text>
+                      <Text>Watches</Text>
+                      <Text>Bags & Backpacks</Text>
+                    </VStack>
+                    <VStack bg={'#f9f9f9'} p={2} align='left'>
+                      <Text as='b' color='#f43397' m='10px 0'>Baby Care</Text>
+                      <Text>All Baby Care</Text>
+                    </VStack>
+                  </Grid>
+                </PopoverBody>
+              </PopoverContent>
+          </Popover>
+        </WrapItem>
+        <WrapItem >
+          <Popover trigger={'hover'}>
+            <PopoverTrigger>
+              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='50px' fontSize='15px'><Link to='girlsPage'>Girls</Link></Button>
+            </PopoverTrigger>
+              <PopoverContent w={'100%'} m={'-8px 0 0 0'}>
+                <PopoverBody p='0' lineHeight='30px' textAlign='left'fontSize={'15px'}>
+                  <Grid templateColumns='repeat(6, auto)' >
+                    <VStack p={2} align='left'>
+                      <Text as='b' color='#f43397' m='10px 0'>Girls 2+ Years</Text>
                       <Text>Dresses</Text>
                     </VStack>
                     <VStack bg={'#f9f9f9'} p={2} align='left'>
@@ -276,17 +311,15 @@ const Navbar = () => {
                   </Grid>
                 </PopoverBody>
               </PopoverContent>
-            </Portal>
           </Popover>
         </WrapItem>
         <WrapItem >
           <Popover trigger={'hover'}>
             <PopoverTrigger>
-              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='70px' fontSize='18px'>Home & Kitchen</Button>
+              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='50px' fontSize='15px'>Home & Kitchen</Button>
             </PopoverTrigger>
-            <Portal>
-              <PopoverContent w={'100%'} fontSize={'xl'} m={'-8px 0 0 0'}>
-                <PopoverBody p='0' lineHeight='40px'>
+              <PopoverContent w={'100%'}m={'-8px 0 0 0'}>
+                <PopoverBody p='0' lineHeight='30px' textAlign='left'fontSize={'15px'}>
                   <Grid templateColumns='repeat(6, auto)'>
                     <VStack p={2} align='left'>
                       <Text as='b' color='#f43397' m='10px 0'>Home Furnishing</Text>
@@ -311,17 +344,15 @@ const Navbar = () => {
                   </Grid>
                 </PopoverBody>
               </PopoverContent>
-            </Portal>
           </Popover>
         </WrapItem>
         <WrapItem >
           <Popover trigger={'hover'}>
             <PopoverTrigger>
-              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='70px' fontSize='18px'>Beauty & Health</Button>
+              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='50px' fontSize='15px'>Beauty & Health</Button>
             </PopoverTrigger>
-            <Portal>
-              <PopoverContent w={'100%'} fontSize={'xl'} m={'-8px 0 0 0'}>
-                <PopoverBody p='0' lineHeight='40px'>
+              <PopoverContent w={'100%'} m={'-8px 0 0 0'}>
+                <PopoverBody p='0' lineHeight='30px' textAlign='left'fontSize={'15px'}>
                   <Grid templateColumns='repeat(6, auto)'>
                     <VStack p={2} align='left'>
                       <Text as='b' color='#f43397' m='10px 0'>Make up</Text>
@@ -343,17 +374,15 @@ const Navbar = () => {
                   </Grid>
                 </PopoverBody>
               </PopoverContent>
-            </Portal>
           </Popover>
         </WrapItem>
         <WrapItem >
           <Popover trigger={'hover'}>
             <PopoverTrigger>
-              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='70px' fontSize='18px'>Jewellery & Accessories</Button>
+              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='50px' fontSize='15px'>Jewellery & Accessories</Button>
             </PopoverTrigger>
-            <Portal>
-              <PopoverContent w={'100%'} fontSize={'xl'} m={'-8px 0 0 0'}>
-                <PopoverBody p='0' lineHeight='40px'>
+              <PopoverContent w={'100%'} m={'-8px 0 0 0'}>
+                <PopoverBody p='0' lineHeight='30px' textAlign='left'fontSize={'15px'}>
                   <Grid templateColumns='repeat(6, auto)'>
                     <VStack p={2} align='left'>
                       <Text as='b' color='#f43397' m='10px 0'>Jewellery</Text>
@@ -377,17 +406,15 @@ const Navbar = () => {
                   </Grid>
                 </PopoverBody>
               </PopoverContent>
-            </Portal>
           </Popover>
         </WrapItem>
         <WrapItem >
           <Popover trigger={'hover'}>
             <PopoverTrigger>
-              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='70px' fontSize='18px'>Bags & Footwear</Button>
+              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='50px' fontSize='15px'>Bags & Footwear</Button>
             </PopoverTrigger>
-            <Portal>
-              <PopoverContent w={'100%'} fontSize={'xl'} m={'-8px 0 0 0'}>
-                <PopoverBody p='0' lineHeight='40px'>
+              <PopoverContent w={'100%'} m={'-8px 0 0 0'}>
+                <PopoverBody p='0' lineHeight='30px' textAlign='left'fontSize={'15px'}>
                   <Grid templateColumns='repeat(6, auto)'>
                     <VStack p={2} align='left'>
                       <Text as='b' color='#f43397' m='10px 0'>Women Bags</Text>
@@ -417,17 +444,15 @@ const Navbar = () => {
                   </Grid>
                 </PopoverBody>
               </PopoverContent>
-            </Portal>
           </Popover>
         </WrapItem>
         <WrapItem >
           <Popover trigger={'hover'}>
             <PopoverTrigger>
-              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='70px' fontSize='18px'>Electronics</Button>
+              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='50px' fontSize='15px'>Electronics</Button>
             </PopoverTrigger>
-            <Portal>
-              <PopoverContent w={'100%'} fontSize={'xl'} lineHeight='40px' m={'-8px 0 0 0'}>
-                <PopoverBody p='0'>
+              <PopoverContent w={'100%'} lineHeight='40px' m={'-8px 0 0 0'}>
+                <PopoverBody p='0' lineHeight='30px' textAlign='left'fontSize={'15px'}>
                   <Grid templateColumns='repeat(6, auto)' >
                     <VStack p={2} align='left'>
                       <Text as='b' color='#f43397' m='10px 0'>Mobile & Accessories</Text>
@@ -445,7 +470,6 @@ const Navbar = () => {
                   </Grid>
                 </PopoverBody>
               </PopoverContent>
-            </Portal>
           </Popover>
         </WrapItem>
       </Wrap>
