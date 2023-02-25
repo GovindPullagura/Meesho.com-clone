@@ -20,12 +20,12 @@ export const addToCartAction = () => {
 };
 
 export const getAllProductData = (params: axiosObj) => (dispatch: Dispatch<any>) => {
-  console.log(params);
+  // console.log(params);
   dispatch(getAllProductRequest());
   axios
     .get(`https://indishop.onrender.com/products`, params)
     .then((res: AxiosResponse<product[]>) => {
-      console.log(res.data);
+      // console.log(res.data);
       dispatch(getAllProductSuccess(res.data));
     })
     .catch((err) => dispatch(getAllProductFailure()));

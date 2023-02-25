@@ -114,7 +114,7 @@ const Home = () => {
     };
 
   return <div>
-    <Navbar />
+    <Navbar/>
     <HStack textAlign={'left'} w='60%' m='auto' mt='50px'>
       <Box bg='#f9f9f9' h='400px' w={'70%'} p='30px 50px'>
         <Text as='b' fontSize={'45px'} lineHeight='60px'>Lowest Prices Best Quality Shopping</Text>
@@ -230,8 +230,10 @@ const Home = () => {
         </HStack>
       </Box>
     </Box>
-    <Box w='80%' m='auto' textAlign='left' mt='60px'>
-      <Text as={'b'} fontSize="35px">Products For You</Text>
+    <Box w='80%' m='auto' mt='60px'>
+      <Box textAlign='left'>
+        <Text as={'b'} textAlign='left' fontSize="35px">Products For You</Text>
+      </Box>
       <br/>
       <br/>
       <Flex>

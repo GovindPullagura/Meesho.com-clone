@@ -6,13 +6,21 @@ import { IoPersonOutline, IoLogOutOutline } from 'react-icons/io5';
 import { BsCart, BsApple, BsPersonCircle } from 'react-icons/bs';
 import { SlBag } from 'react-icons/sl';
 import { GrUserAdmin } from 'react-icons/gr';
+import React, { useState } from "react";
 
 const Navbar = () => {
+  const [search, setSearch]=useState('');
+
+  const handleSearch=(e:React.ChangeEvent<HTMLInputElement>)=>{
+    console.log(e.target.value);
+    setSearch(e.target.value);
+  }
+
   return <Box position={'sticky'} top={'0%'} bg={'white'} zIndex='999'>
     <HStack height='70px' boxShadow='rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;' spacing={'10'} textAlign='center' justifyContent='center'>
       <Link to={"/"}><Image src="./Indishop_logo.png" alt='logo' width='130px' /></Link>
       <InputGroup width='400px'>
-        <Input type='text' placeholder='Try Saree, Kurti' id='search' h='40px' />
+        <Input type='text' placeholder='Try Saree, Kurti' id='search' h='40px' onChange={(e)=>handleSearch(e)}/>
         <InputLeftElement>
           <CiSearch size={'30px'} color='#707070' />
         </InputLeftElement>
