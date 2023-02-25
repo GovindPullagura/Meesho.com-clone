@@ -20,6 +20,7 @@ export type initData = {
 
 export type state = {
   womenData: initData;
+  allProductData:initData;
 };
 
 export type paramsObj = {
@@ -30,6 +31,7 @@ export type paramsObj = {
   _sort?: string | null;
   _order?: string | null;
 };
+
 export type effectParams = {
   colour: string[] | [];
   category: string[] | [];
@@ -37,6 +39,9 @@ export type effectParams = {
   brand: string[] | [];
   order?: string;
 };
+
 export type axiosObj = {
   params: paramsObj;
 };
+
+
