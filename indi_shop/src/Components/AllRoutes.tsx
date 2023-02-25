@@ -6,7 +6,7 @@ import CartPage from "../Pages/CartPage";
 import CheckoutPage from "../Pages/CheckoutPage";
 import GirlsPage from "../Pages/GirlsPage";
 import Home from "../Pages/Home";
-import LoginPage from "../Pages/LoginPage";
+import LoginPage  from "../Pages/LoginPage";
 import MenPage from "../Pages/MenPage";
 import SignUpPage from "../Pages/SignUpPage";
 import SingleProductPage from "../Pages/SingleProductPage";

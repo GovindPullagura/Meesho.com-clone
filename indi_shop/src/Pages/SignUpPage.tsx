@@ -1,349 +1,208 @@
-import React, { useState } from 'react';
 import {
-  Box,
-  ButtonGroup,
-  Button,
-  Heading,
   Flex,
+  Box,
   FormControl,
-  GridItem,
   FormLabel,
   Input,
-  Select,
-  SimpleGrid,
-  InputLeftAddon,
   InputGroup,
-  Textarea,
-  FormHelperText,
+  HStack,
   InputRightElement,
   Stack,
+  Button,
+  Heading,
   Text,
-  Image
+  useColorModeValue,
+  Image,
 } from '@chakra-ui/react';
-import { Link } from 'react-router-dom'
-import { useToast } from '@chakra-ui/react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import AuthNav from '../Components/AuthNav';
-
-const Form1 = () => {
-  const [show, setShow] = React.useState(false);
-  const handleClick = () => setShow(!show);
-
-  return (
-    <>
-      <Image alt={'Login Image'} objectFit={'cover'} h="260px" w="100%" borderRadius="5px" src={'https://images.meesho.com/images/marketing/1661417516766.webp'} />
-      <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
-        Sign up
-      </Heading>
-      <Flex>
-        <FormControl mr="5%">
-          <FormLabel htmlFor="first-name" fontWeight={'normal'}>
-            First name
-          </FormLabel>
-          <Input id="first-name" placeholder="First name" />
-        </FormControl>
-
-        <FormControl>
-          <FormLabel htmlFor="last-name" fontWeight={'normal'}>
-            Last name
-          </FormLabel>
-          <Input id="last-name" placeholder="First name" />
-        </FormControl>
-      </Flex>
-      <FormControl mt="2%">
-        <FormLabel htmlFor="email" fontWeight={'normal'} >
-          Email address
-        </FormLabel>
-        <Input id="email" type="email" />
-        <FormHelperText>We'll never share your email.</FormHelperText>
-      </FormControl>
-
-      <FormControl>
-        <FormLabel htmlFor="password" fontWeight={'normal'} mt="2%">
-          Password
-        </FormLabel>
-        <InputGroup size="md">
-          <Input
-            pr="4.5rem"
-            type={show ? 'text' : 'password'}
-            placeholder="Enter password"
-          />
-          <InputRightElement width="4.5rem">
-            <Button _hover={{
-              color: '#f43397'
-            }} h="1.75rem" size="sm">
-              {show ? 'Hide' : 'Show'}
-            </Button>
-          </InputRightElement>
-        </InputGroup>
-      </FormControl>
-      <Stack pt={6}>
-        <Text align={'center'}>
-          Already a user?
-          <Link to='/login'>
-            <Text textDecoration='underline' color="blue" fontSize='18px'
-              _hover={{
-                color: '#f43397'
-              }}>
-              Login
-            </Text>
-          </Link>
-        </Text>
-      </Stack>
-    </>
-  );
-};
-
-const Form2 = () => {
-  return (
-    <>
-      <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
-        User Details
-      </Heading>
-      <FormControl as={GridItem} colSpan={[6, 3]}>
-        <FormLabel
-          htmlFor="country"
-          fontSize="sm"
-          fontWeight="md"
-          color="gray.700"
-          _dark={{
-            color: 'gray.50',
-          }}>
-          Country / Region
-        </FormLabel>
-        <Select
-          id="country"
-          name="country"
-          autoComplete="country"
-          placeholder="Select option"
-          focusBorderColor="brand.400"
-          shadow="sm"
-          size="sm"
-          w="full"
-          rounded="md">
-          <option>India</option>
-          <option>United States</option>
-          <option>Canada</option>
-          <option>Mexico</option>
-          <option>Chaina</option>
-          <option>Thailand</option>
-        </Select>
-      </FormControl>
-
-      <FormControl as={GridItem} colSpan={6}>
-        <FormLabel
-          htmlFor="street_address"
-          fontSize="sm"
-          fontWeight="md"
-          color="gray.700"
-          _dark={{
-            color: 'gray.50',
-          }}
-          mt="2%">
-          Street address
-        </FormLabel>
-        <Input
-          type="text"
-          name="street_address"
-          id="street_address"
-          autoComplete="street-address"
-          focusBorderColor="brand.400"
-          shadow="sm"
-          size="sm"
-          w="full"
-          rounded="md"
-        />
-      </FormControl>
-
-      <FormControl as={GridItem} colSpan={[6, 6, null, 2]}>
-        <FormLabel
-          htmlFor="city"
-          fontSize="sm"
-          fontWeight="md"
-          color="gray.700"
-          _dark={{
-            color: 'gray.50',
-          }}
-          mt="2%">
-          City
-        </FormLabel>
-        <Input
-          type="text"
-          name="city"
-          id="city"
-          autoComplete="city"
-          focusBorderColor="brand.400"
-          shadow="sm"
-          size="sm"
-          w="full"
-          rounded="md"
-        />
-      </FormControl>
-      <FormControl as={GridItem} colSpan={[6, 3, null, 2]}>
-        <FormLabel
-          htmlFor="postal_code"
-          fontSize="sm"
-          fontWeight="md"
-          color="gray.700"
-          _dark={{
-            color: 'gray.50',
-          }}
-          mt="2%">
-          ZIP / Postal
-        </FormLabel>
-        <Input
-          type="text"
-          name="postal_code"
-          id="postal_code"
-          autoComplete="postal-code"
-          focusBorderColor="brand.400"
-          shadow="sm"
-          size="sm"
-          w="full"
-          rounded="md"
-        />
-      </FormControl>
-    </>
-  );
-};
-
-const Form3 = () => {
-  return (
-    <>
-      <Heading w="100%" textAlign={'center'} fontWeight="normal">
-        Social Handles
-      </Heading>
-      <SimpleGrid columns={1} spacing={6}>
-        <FormControl as={GridItem} colSpan={[3, 2]}>
-          <FormLabel
-            fontSize="sm"
-            fontWeight="md"
-            color="gray.700"
-            _dark={{
-              color: 'gray.50',
-            }}>
-            Website
-          </FormLabel>
-          <InputGroup size="sm">
-            <InputLeftAddon
-              bg="gray.50"
-              _dark={{
-                bg: 'gray.800',
-              }}
-              color="gray.500"
-              rounded="md">
-              http://
-            </InputLeftAddon>
-            <Input
-              type="tel"
-              placeholder="www.example.com"
-              focusBorderColor="brand.400"
-              rounded="md"
-            />
-          </InputGroup>
-        </FormControl>
-
-        <FormControl id="email" mt={1}>
-          <FormLabel
-            fontSize="sm"
-            fontWeight="md"
-            color="gray.700"
-            _dark={{
-              color: 'gray.50',
-            }}>
-            About
-          </FormLabel>
-          <Textarea
-            placeholder="you@example.com"
-            rows={3}
-            shadow="sm"
-            focusBorderColor="brand.400"
-            fontSize={{
-              sm: 'sm',
-            }}
-          />
-          <FormHelperText>
-            Brief description for your profile. URLs are hyperlinked.
-          </FormHelperText>
-        </FormControl>
-      </SimpleGrid>
-    </>
-  );
-};
+import axios from 'axios';
+import { useToast } from '@chakra-ui/react'
 
 export default function SignUpPage() {
-  const toast = useToast();
-  const [step, setStep] = useState(1);
-  const [progress, setProgress] = useState(33.33);
+  const [showPassword, setShowPassword] = useState(false);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [mobileNum, setMobileNum] = useState("");
+
+  const navigate = useNavigate();
+  const toast = useToast()
+
+  
+  const handleSubmit = () => {
+    let obj = {
+      id: Date.now(),
+      frist_name: firstName,
+      last_name: lastName,
+      email: email,
+      password: password,
+    }
+    if(firstName.length == 0 && lastName.length == 0 && 
+      email.length == 0 && password.length == 0){
+      toast({
+        title: 'Please Fill The Form.',
+        status: 'error',
+        duration: 4000,
+        isClosable: true,
+      })
+      return;
+    }
+    else if(password.length < 5){
+      toast({
+        title: 'password need minimum six characters.',
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      })
+      return;
+    } 
+    axios
+      .post(`https://indishop.onrender.com/users`, obj)
+      .then((r) => {
+        console.log(r);
+        toast({
+          title: 'User Registered Succsfull please login.',
+          status: 'success',
+          duration: 3000,
+          isClosable: true,
+        })
+        navigate("/login")
+      })
+      .catch((e) => {
+        console.log(e);
+        toast({
+          title: 'Please Signup here.',
+          status: 'error',
+          duration: 3000,
+          isClosable: true,
+        })
+      })
+  }
   return (
-    <>
+    <Box>
       <AuthNav />
-      <Box bg='#fdeced' h='750px' pt='0' mt='0'>
-        <Box
-          borderRadius="5px"
-          background='white'
-          borderWidth="1px"
-          maxWidth={450}
-          p='25px'
-          m="0px auto"
-          as="form"
-        >
-          {step === 1 ? <Form1 /> : step === 2 ? <Form2 /> : <Form3 />}
-          <ButtonGroup mt="5%" w="100%">
-            <Flex w="100%" justifyContent="space-between">
-              <Flex>
-                <Button
-                  onClick={() => {
-                    setStep(step - 1);
-                    setProgress(progress - 33.33);
-                  }}
-                  isDisabled={step === 1}
-                  background="#f43397"
-                  variant="solid"
-                  w="7rem"
-                  mr="5%">
-                  Back
-                </Button>
-                <Button
-                  w="7rem"
-                  isDisabled={step === 3}
-                  onClick={() => {
-                    setStep(step + 1);
-                    if (step === 3) {
-                      setProgress(100);
-                    } else {
-                      setProgress(progress + 33.33);
-                    }
-                  }}
-                  colorScheme="#f43397"
-                  variant="outline"
-                  _hover={{
-                    color: '#f43397'
-                  }}
-                >
-                  Next
-                </Button>
-              </Flex>
-              {step === 3 ? (
-                <Button
-                  w="7rem"
-                  background='#f43397'
-                  variant="solid"
-                  onClick={() => {
-                    toast({
-                      title: 'Account created.',
-                      description: "We've created your account for you.",
-                      status: 'success',
-                      duration: 4000,
-                      isClosable: true,
-                    });
-                  }}>
-                  Submit
-                </Button>
-              ) : null}
-            </Flex>
-          </ButtonGroup>
-        </Box>
+      <Box w="100%" h="700px">
+        <Flex minH={"100vh"} align={"center"} justify={"center"} bg="#fdeced">
+          <Stack spacing={7} mx={'auto'} maxW={'lg'} py={4} px={6}>
+            <Box
+              rounded={'lg'}
+              bg={useColorModeValue('white', 'gray.700')}
+              boxShadow={'lg'}
+              p={8}>
+              <Stack spacing={4}>
+                <Image
+                  borderRadius="7px"
+                  src="https://images.meesho.com/images/marketing/1661417516766.webp"
+                />
+                <Stack align={'center'}>
+                  <Heading fontSize={'4xl'} textAlign={'center'}>
+                    Sign up
+                  </Heading>
+                  <Text fontSize={'lg'} color={'gray.600'}>
+                    to enjoy all of our cool features ✌️
+                  </Text>
+                </Stack>
+                <HStack>
+                  <Box>
+                    <FormControl id="firstName" isRequired>
+                      <FormLabel>First Name</FormLabel>
+                      <Input
+                        type="text"
+                        placeholder='enter your first name'
+                        onChange={(e) => setFirstName(e.target.value)}
+                        value={firstName}
+                      />
+                    </FormControl>
+                  </Box>
+                  <Box>
+                    <FormControl id="lastName">
+                      <FormLabel>Last Name</FormLabel>
+                      <Input
+                        type="text"
+                        placeholder='enter your last name'
+                        onChange={(e) => setLastName(e.target.value)}
+                        value={lastName}
+                      />
+                    </FormControl>
+                  </Box>
+                </HStack>
+                <FormControl id="email" isRequired>
+                  <FormLabel>Email address</FormLabel>
+                  <Input
+                    type="email"
+                    placeholder='enter your email'
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                  />
+                </FormControl>
+                <FormControl id="password" isRequired>
+                  <FormLabel>Password</FormLabel>
+                  <InputGroup>
+                    <Input
+                      type={showPassword ? 'text' : 'password'}
+                      placeholder='enter your password'
+                      onChange={(e) => setPassword(e.target.value)}
+                      value={password}
+                    />
+                    <InputRightElement h={'full'}>
+                      <Button
+                        variant={'ghost'}
+                        onClick={() =>
+                          setShowPassword((showPassword) => !showPassword)
+                        }>
+                        {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                      </Button>
+                    </InputRightElement>
+                  </InputGroup>
+                </FormControl>
+                <FormControl id="number" isRequired>
+                  <FormLabel>Mobile Number</FormLabel>
+                  <Input
+                    type="number"
+                    placeholder='enter your mobile number'
+                    onChange={(e) => setMobileNum(e.target.value)}
+                    value={mobileNum}
+                  />
+                </FormControl>
+                <Stack spacing={10} pt={2}>
+                  <Button
+                    loadingText="Submitting"
+                    size="lg"
+                    bg="#f43397"
+                    color={"white"}
+                    _hover={{
+                      bg: "#f43397",
+                      color: "black",
+                    }}
+                    onClick={handleSubmit}
+                  >
+                    Sign up
+                  </Button>
+                </Stack>
+                <Stack pt={6}>
+                  <Text align={'center'}>
+                    Already a user? <Link to='/login' color={'blue.400'} >
+                      <Text
+                        textDecoration="underline"
+                        color="blue"
+                        fontSize="18px"
+                        _hover={{
+                          color: "#f43397",
+                        }}>
+                        Login
+                      </Text>
+                    </Link>
+                  </Text>
+                </Stack>
+              </Stack>
+            </Box>
+          </Stack>
+        </Flex>
       </Box>
-    </>
+    </Box>
   );
 }
