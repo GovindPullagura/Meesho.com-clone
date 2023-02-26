@@ -42,7 +42,7 @@ export const getAllProductData =
   };
 
 export const addToCart = (data: product) => (dispatch: Dispatch<any>) => {
-  dispatch(getAllProductRequest());
+  // dispatch(getAllProductRequest());
   axios
     .post(`https://indishop.onrender.com/cart`, data)
     .then((res) => dispatch(addToCartAction()))

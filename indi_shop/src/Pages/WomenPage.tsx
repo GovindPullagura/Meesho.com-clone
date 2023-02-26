@@ -20,6 +20,8 @@ import { axiosObj, effectParams, initData, product, state } from "../constants";
 import { addToCart, getWomenData } from "../Redux/WomenReducer/action";
 import ProductCard from "../Components/ProductCard";
 import { useLocation, useSearchParams } from "react-router-dom";
+import Navbar from "../Components/Navbar";
+import { Footer } from "../Components/Footer";
 
 const WomenPage = () => {
   // getting the data from store:
@@ -123,6 +125,7 @@ const WomenPage = () => {
 
   return (
     <Box>
+      <Navbar />
       <Flex mt="30px">
         <Stack
           p="10px"
@@ -389,6 +392,7 @@ const WomenPage = () => {
         )}
         <Spacer />
       </Flex>
+      <Footer />
     </Box>
   );
 };

@@ -1,7 +1,13 @@
 import axios, { AxiosResponse } from "axios";
 import { Dispatch } from "react";
 import { axiosObj, product } from "../../constants";
-import { ADD_TO_CART, DATA_FAIL, DATA_REQ, DATA_SUCCESS, GET_CART_DATA } from "./actionTypes";
+import {
+  ADD_TO_CART,
+  DATA_FAIL,
+  DATA_REQ,
+  DATA_SUCCESS,
+  GET_CART_DATA,
+} from "./actionTypes";
 
 export const getReqAction = () => {
   return { type: DATA_REQ };
@@ -64,4 +70,8 @@ export const getcartData = (dispatch: Dispatch<any>) => {
     .then((res: AxiosResponse<product[]>) => {
       dispatch(getCartDataSuccess(res.data));
     });
+};
+
+export const deleteCartItem = (id: number) => {
+  return axios.delete(`https://indishop.onrender.com/cart/${id}`);
 };
