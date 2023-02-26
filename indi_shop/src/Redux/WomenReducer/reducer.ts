@@ -1,10 +1,11 @@
 import { initData, ReducerAction } from "../../constants";
-import { ADD_TO_CART, DATA_FAIL, DATA_REQ, DATA_SUCCESS } from "./actionTypes";
+import { ADD_TO_CART, DATA_FAIL, DATA_REQ, DATA_SUCCESS, GET_CART_DATA } from "./actionTypes";
 
 const womenData: initData = {
   isLoading: false,
   isError: false,
   products: [],
+  cart: [],
 };
 
 export const reducer = (
@@ -21,6 +22,8 @@ export const reducer = (
 
     case ADD_TO_CART:
       return { ...state, isLoading: false };
+    case GET_CART_DATA:
+      return { ...state, cart: payload , isLoading: false};
     default:
       return state;
   }

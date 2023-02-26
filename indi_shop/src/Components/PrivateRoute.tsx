@@ -1,7 +1,13 @@
-import React from "react";
+import { useSelector } from "react-redux"
+import { Navigate } from "react-router-dom"
 
-const PrivateRoute = () => {
-  return <div>PrivateRoute</div>;
-};
-
-export default PrivateRoute;
+// @ts-ignore
+export const PrivateRoute=({children})=>{
+    // @ts-ignore
+    const isAuth=useSelector((store)=>store.authReducer.isAuth)
+    
+    if(!isAuth){
+        return <Navigate to={"/signup"} />
+    }
+    return children
+}

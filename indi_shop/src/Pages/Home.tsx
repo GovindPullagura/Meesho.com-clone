@@ -7,7 +7,7 @@ import { BsCheckCircleFill } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { Footer } from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import ProductCard from "../Components/ProductCard";
@@ -21,6 +21,8 @@ const Home = () => {
     const { isLoading, isError, products }: initData = useSelector(
       (store: state) => store.allProductData
     );
+    // @ts-ignore
+    // const searchQuery= (JSON.parse(localStorage.getItem("search"))||[])
   
     // Settings to filter the data:
     const location = useLocation();
@@ -106,7 +108,8 @@ const Home = () => {
       let params: effectParams = { colour, category, size, brand };
       order && (params.order = order);
       setSearchParams(params);
-      dispatch(getAllProductData(obj));
+      // @ts-ignore
+      dispatch(getAllProductData(obj))
     }, [colour, order, category, size, brand, location.search]);
   
     const handleAdd = (data: product) => {
@@ -116,8 +119,21 @@ const Home = () => {
   return <div>
     <Navbar/>
     <HStack textAlign={'left'} w='60%' m='auto' mt='50px'>
-      <Box bg='#f9f9f9' h='400px' w={'70%'} p='30px 50px'>
-        <Text as='b' fontSize={'45px'} lineHeight='60px'>Lowest Prices Best Quality Shopping</Text>
+      <Box bg='#f9f9f9' h={{
+            base: "auto",
+            sx: 'auto',
+            md: "300px",
+            lg: "400px",
+          }} w='70%' p='30px 50px'>
+        <Text as='b' fontSize={{
+            base: "15px",
+            md: "30px",
+            lg: "45px",
+          }} lineHeight={{
+            base: "20px",
+            md: "40px",
+            lg: "60px",
+          }}>Lowest Prices Best Quality Shopping</Text>
         <HStack divider={<StackDivider borderColor='black' />} bg='white' marginTop={'30px'} p='3' borderRadius={'10px'} w='310px' padding='10px'>
           <HStack>
             <Image src="https://images.meesho.com/images/pow/freeDelivery.svg" borderRadius={'50%'} bg='#f0a9c8' w={'35px'} h='35px' />
@@ -150,13 +166,19 @@ const Home = () => {
       <Image src="https://images.meesho.com/images/marketing/1649759774600.jpg" h='100%' w='100%' borderRadius={'10px'} />
       <HStack p={'0 0 500% 0'} marginTop='-300 '>
         <Button colorScheme={'none'}>
-          <Image src='https://images.meesho.com/images/marketing/1649760442043.webp' />
+          <Link to='/womenPage'>
+            <Image src='https://images.meesho.com/images/marketing/1649760442043.webp' />
+          </Link>
         </Button>
         <Button colorScheme={'none'} pt='20%'>
+          <Link to='/menPage'>
           <Image src='https://images.meesho.com/images/marketing/1649760423313.webp' />
+          </Link>
         </Button>
         <Button colorScheme={'none'} pt='20%'>
-          <Image src='https://images.meesho.com/images/marketing/1649759799809.webp' />
+          <Link to='/girlsPage'>
+            <Image src='https://images.meesho.com/images/marketing/1649759799809.webp' />
+          </Link>
         </Button>
       </HStack>
     </Box>
@@ -246,10 +268,10 @@ const Home = () => {
             <Heading fontSize={"15px"}>Sort by price:</Heading>
             <RadioGroup defaultValue={order}>
               <Flex direction="column">
-                <Radio onChange={handlePrice} value="desc">
+                <Radio onChange={handlePrice} colorScheme='pink' value="desc">
                   High to Low
                 </Radio>
-                <Radio onChange={handlePrice} value="asc">
+                <Radio onChange={handlePrice} colorScheme='pink' value="asc">
                   Low to High
                 </Radio>
               </Flex>
@@ -262,6 +284,7 @@ const Home = () => {
               <Flex direction={"column"}>
                 <Checkbox
                   value={"White"}
+                  colorScheme='pink'
                   isChecked={colour.includes("White")}
                   onChange={handlecolour}
                 >
@@ -269,6 +292,7 @@ const Home = () => {
                 </Checkbox>
                 <Checkbox
                   value={"Pink"}
+                  colorScheme='pink'
                   isChecked={colour.includes("Pink")}
                   onChange={handlecolour}
                 >
@@ -276,6 +300,7 @@ const Home = () => {
                 </Checkbox>
                 <Checkbox
                   value={"Black"}
+                  colorScheme='pink'
                   isChecked={colour.includes("Black")}
                   onChange={handlecolour}
                 >
@@ -283,6 +308,7 @@ const Home = () => {
                 </Checkbox>
                 <Checkbox
                   value={"Blue"}
+                  colorScheme='pink'
                   isChecked={colour.includes("Blue")}
                   onChange={handlecolour}
                 >
@@ -290,6 +316,7 @@ const Home = () => {
                 </Checkbox>
                 <Checkbox
                   value={"Beige"}
+                  colorScheme='pink'
                   isChecked={colour.includes("Beige")}
                   onChange={handlecolour}
                 >
@@ -297,6 +324,7 @@ const Home = () => {
                 </Checkbox>
                 <Checkbox
                   value={"Green"}
+                  colorScheme='pink'
                   isChecked={colour.includes("Green")}
                   onChange={handlecolour}
                 >
@@ -304,6 +332,7 @@ const Home = () => {
                 </Checkbox>
                 <Checkbox
                   value={"Grey"}
+                  colorScheme='pink'
                   isChecked={colour.includes("Grey")}
                   onChange={handlecolour}
                 >
@@ -311,6 +340,7 @@ const Home = () => {
                 </Checkbox>
                 <Checkbox
                   value={"Red"}
+                  colorScheme='pink'
                   isChecked={colour.includes("Red")}
                   onChange={handlecolour}
                 >
@@ -324,6 +354,7 @@ const Home = () => {
             <Flex direction={"column"}>
               <Checkbox
                 value={"T-shirt"}
+                colorScheme='pink'
                 isChecked={category.includes("T-shirt")}
                 onChange={handleCategory}
               >
@@ -331,6 +362,7 @@ const Home = () => {
               </Checkbox>
               <Checkbox
                 value={"Kurti"}
+                colorScheme='pink'
                 isChecked={category.includes("Kurti")}
                 onChange={handleCategory}
               >
@@ -338,6 +370,7 @@ const Home = () => {
               </Checkbox>
               <Checkbox
                 value={"Saree"}
+                colorScheme='pink'
                 isChecked={category.includes("Saree")}
                 onChange={handleCategory}
               >
@@ -350,6 +383,7 @@ const Home = () => {
             <Flex direction={"column"}>
               <Checkbox
                 value={"Regular"}
+                colorScheme='pink'
                 isChecked={size.includes("Regular")}
                 onChange={handleSize}
               >
@@ -357,6 +391,7 @@ const Home = () => {
               </Checkbox>
               <Checkbox
                 value={"S"}
+                colorScheme='pink'
                 isChecked={size.includes("S")}
                 onChange={handleSize}
               >
@@ -364,6 +399,7 @@ const Home = () => {
               </Checkbox>
               <Checkbox
                 value={"M"}
+                colorScheme='pink'
                 isChecked={size.includes("M")}
                 onChange={handleSize}
               >
@@ -371,6 +407,7 @@ const Home = () => {
               </Checkbox>
               <Checkbox
                 value={"L"}
+                colorScheme='pink'
                 isChecked={size.includes("L")}
                 onChange={handleSize}
               >
@@ -378,6 +415,7 @@ const Home = () => {
               </Checkbox>
               <Checkbox
                 value={"XL"}
+                colorScheme='pink'
                 isChecked={size.includes("XL")}
                 onChange={handleSize}
               >
@@ -385,6 +423,7 @@ const Home = () => {
               </Checkbox>
               <Checkbox
                 value={"XXL"}
+                colorScheme='pink'
                 isChecked={size.includes("XXL")}
                 onChange={handleSize}
               >
@@ -397,6 +436,7 @@ const Home = () => {
             <Flex direction={"column"}>
               <Checkbox
                 value={"Nike"}
+                colorScheme='pink'
                 isChecked={brand.includes("Nike")}
                 onChange={handleBrand}
               >
@@ -404,6 +444,7 @@ const Home = () => {
               </Checkbox>
               <Checkbox
                 value={"Roadster"}
+                colorScheme='pink'
                 isChecked={brand.includes("Roadster")}
                 onChange={handleBrand}
               >
@@ -411,6 +452,7 @@ const Home = () => {
               </Checkbox>
               <Checkbox
                 value={"Lee"}
+                colorScheme='pink'
                 isChecked={brand.includes("Lee")}
                 onChange={handleBrand}
               >
@@ -418,6 +460,7 @@ const Home = () => {
               </Checkbox>
               <Checkbox
                 value={"UCB"}
+                colorScheme='pink'
                 isChecked={brand.includes("UCB")}
                 onChange={handleBrand}
               >
@@ -425,6 +468,7 @@ const Home = () => {
               </Checkbox>
               <Checkbox
                 value={"HRX"}
+                colorScheme='pink'
                 isChecked={brand.includes("HRX")}
                 onChange={handleBrand}
               >
@@ -432,6 +476,7 @@ const Home = () => {
               </Checkbox>
               <Checkbox
                 value={"Louis Philippe"}
+                colorScheme='pink'
                 isChecked={brand.includes("Louis Philippe")}
                 onChange={handleBrand}
               >

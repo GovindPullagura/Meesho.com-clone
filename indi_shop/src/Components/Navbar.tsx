@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Box, Image, Input, HStack, InputGroup, InputLeftElement, Button, Text, VStack, StackDivider, Popover, PopoverTrigger, PopoverContent, PopoverBody, Wrap, WrapItem, Grid } from '@chakra-ui/react';
 import { CiSearch } from 'react-icons/ci';
 import { TfiMobile } from 'react-icons/tfi';
@@ -6,20 +6,49 @@ import { IoPersonOutline, IoLogOutOutline } from 'react-icons/io5';
 import { BsCart, BsApple, BsPersonCircle } from 'react-icons/bs';
 import { SlBag } from 'react-icons/sl';
 import { GrUserAdmin } from 'react-icons/gr';
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  // @ts-ignore
+  const isAuth=useSelector((store)=>store.authReducer.isAuth);
+  // @ts-ignore
+  const user= (JSON.parse(localStorage.getItem("user"))||[])
   const [search, setSearch]=useState('');
+  const navigate = useNavigate()
+  const admin= ['nandan3512@gmail.com'];
 
   const handleSearch=(e:React.ChangeEvent<HTMLInputElement>)=>{
-    console.log(e.target.value);
+    e.preventDefault();
     setSearch(e.target.value);
   }
 
+  useEffect(()=>{
+    localStorage.setItem("search",JSON.stringify(search));
+  },[search])
+
+  const handleLogout = () =>{
+    localStorage.setItem("isAuth",JSON.stringify(false));
+    localStorage.removeItem('user')
+    navigate(0);
+  }
+
   return <Box position={'sticky'} top={'0%'} bg={'white'} zIndex='999'>
-    <HStack height='70px' boxShadow='rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;' spacing={'10'} textAlign='center' justifyContent='center'>
-      <Link to={"/"}><Image src="./Indishop_logo.png" alt='logo' width='130px' /></Link>
-      <InputGroup width='400px'>
+    <HStack height='70px' boxShadow='rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;' spacing={{
+            base: "2",
+            md: "5",
+            lg: "10",
+          }} textAlign='center' justifyContent='center'>
+      <Link to={"/"}><Image src="./Indishop_logo.png" alt='logo' width={{
+            base: "100px",
+            md: "115px",
+            lg: "130px",
+          }} /></Link>
+      <InputGroup width={{
+            base: "50px",
+            md: "200px",
+            lg: "400px",
+          }}>
         <Input type='text' placeholder='Try Saree, Kurti' id='search' h='40px' onChange={(e)=>handleSearch(e)}/>
         <InputLeftElement>
           <CiSearch size={'30px'} color='#707070' />
@@ -28,7 +57,10 @@ const Navbar = () => {
       <HStack divider={<StackDivider borderColor='gray.200' h='70px'/>}>
         <Popover trigger={'hover'}>
           <PopoverTrigger>
-            <Button colorScheme='none' color='black' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='70px' fontSize='15px'><TfiMobile />Download App</Button>
+            <Button colorScheme='none' color='black' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='70px' fontSize={{
+            base: "10px",
+            lg: "15px",
+          }}><TfiMobile />Download App</Button>
           </PopoverTrigger>
             <PopoverContent p={4} w='220px' m={'-8px 0 0 0'}>
               <PopoverBody>
@@ -51,35 +83,42 @@ const Navbar = () => {
             </PopoverContent>
         </Popover>
 
-        <Button colorScheme='none' color='black' fontSize='15px'>Become a Supplier</Button>
+        <Button colorScheme='none' color='black' fontSize={{
+            base: "10px",
+            lg: "15px",
+          }}>Become a Supplier</Button>
 
         <Popover trigger={'hover'}>
           <PopoverTrigger>
-            <Button colorScheme='none' color='black' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='70px' fontSize='15px'><IoPersonOutline />Profile</Button>
+            <Button colorScheme='none' color='black' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='70px' fontSize={{
+            base: "10px",
+            lg: "15px",
+          }}><IoPersonOutline />Profile</Button>
           </PopoverTrigger>
           <PopoverContent w='fit' m={'-8px 0 0 0'}>
             <PopoverBody>
-               {/* <VStack divider={<StackDivider borderColor='gray.200' />} align='left'>
+              {isAuth? <VStack divider={<StackDivider borderColor='gray.200' />} align='left'>
               <HStack>
                 <BsPersonCircle size='35px' color='#e4edff'/>
                 <Box>
                   <Text as='b' fontSize='15px'>Hello User</Text>
-                  <Text>+91 xxxxxxxxxx</Text>
+                  <Text>{user.name}</Text>
                 </Box>
               </HStack>
               <Button colorScheme='none' color='black' m={'0 55px 0 0'} p={0}>
                 <SlBag />
                 <Text fontSize='15px' p='0 0 0 15px'>My Orders</Text>
               </Button>
-              <Button colorScheme='none' color='black' m={'0 75px 0 0'} p={0}>
+              {admin.includes(user.id) && <Button colorScheme='none' color='black' m={'0 75px 0 0'} p={0}>
                 <GrUserAdmin />
                 <Text fontSize='15px' p='0 0 0 13px'><Link to='/admin'>Admin</Link></Text>
-              </Button>
-              <Button colorScheme='none' color='black' m={'0 50px 0 0'} p={0}>
+              </Button>}
+              <Button colorScheme='none' color='black' m={'0 50px 0 0'} p={0} onClick={handleLogout}>
                 <IoLogOutOutline size='20px'/>
                 <Text fontSize='15px' p='0 30px 0 10px'>Logout</Text>
               </Button>
-              </VStack>  */}
+              </VStack> 
+              : 
               <VStack divider={<StackDivider borderColor='gray.200' />} textAlign='left' p={2}>
                 <HStack>
                   <Box>
@@ -93,19 +132,29 @@ const Navbar = () => {
                   <SlBag />
                   <Text fontSize='15px' p='0 0 0 15px'>My Orders</Text>
                 </Button>
-              </VStack>
+              </VStack>}
             </PopoverBody>
           </PopoverContent>
         </Popover>
 
-        <Button colorScheme='none' color='black' fontSize='15px'><Link to='/cart'><BsCart />Cart</Link></Button></HStack>
+        <Button colorScheme='none' color='black' fontSize={{
+            base: "10px",
+            lg: "15px",
+          }}><Link to='/cart'><BsCart />Cart</Link></Button></HStack>
     </HStack>
     <HStack height='50px' boxShadow='rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;'  justifyContent='center'>
-      <Wrap spacing={'5'}>
+      <Grid templateColumns='repeat(10, auto)' gap={{
+            base: "1",
+            md: "3",
+            lg: "5",
+          }}>
         <WrapItem>
           <Popover trigger={'hover'}>
             <PopoverTrigger>
-              <Button colorScheme='none' color='black'  borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='50px' fontSize='15px'><Link to='/womenPage'>Women Ethnic</Link></Button>
+              <Button colorScheme='none' color='black'  borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='50px' fontSize={{
+            base: "10px",
+            lg: "15px",
+          }}><Link to='/womenPage'>Women Ethnic</Link></Button>
             </PopoverTrigger>
               <PopoverContent w={'100%'} m={'-8px 0 0 0'}>
                 <PopoverBody p='0' lineHeight='30px' textAlign='left'fontSize={'15px'}>
@@ -160,7 +209,10 @@ const Navbar = () => {
         <WrapItem >
           <Popover trigger={'hover'}>
             <PopoverTrigger>
-              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='50px' fontSize='15px'><Link to='/womenPage'>Women Western</Link></Button>
+              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='50px' fontSize={{
+            base: "10px",
+            lg: "15px",
+          }}><Link to='/womenPage'>Women Western</Link></Button>
             </PopoverTrigger>
               <PopoverContent w={'100%'} m={'-8px 0 0 0'}>
                 <PopoverBody p='0' lineHeight='30px' textAlign='left'fontSize={'15px'}>
@@ -198,7 +250,10 @@ const Navbar = () => {
         <WrapItem >
           <Popover trigger={'hover'}>
             <PopoverTrigger>
-              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='50px' fontSize='15px'><Link to='/menPage'>Men</Link></Button>
+              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='50px' fontSize={{
+            base: "10px",
+            lg: "15px",
+          }}><Link to='/menPage'>Men</Link></Button>
             </PopoverTrigger>
               <PopoverContent w={'100%'} m={'-8px 0 0 0'}>
                 <PopoverBody p='0' lineHeight='30px' textAlign='left'fontSize={'15px'}>
@@ -250,7 +305,10 @@ const Navbar = () => {
         <WrapItem >
           <Popover trigger={'hover'}>
             <PopoverTrigger>
-              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='50px' fontSize='15px'><Link to='boysPage'>Boys</Link></Button>
+              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='50px' fontSize={{
+            base: "10px",
+            lg: "15px",
+          }}><Link to='boysPage'>Boys</Link></Button>
             </PopoverTrigger>
               <PopoverContent w={'100%'} m={'-8px 0 0 0'}>
                 <PopoverBody p='0' lineHeight='30px' textAlign='left'fontSize={'15px'}>
@@ -283,7 +341,10 @@ const Navbar = () => {
         <WrapItem >
           <Popover trigger={'hover'}>
             <PopoverTrigger>
-              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='50px' fontSize='15px'><Link to='girlsPage'>Girls</Link></Button>
+              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='50px' fontSize={{
+            base: "10px",
+            lg: "15px",
+          }}><Link to='girlsPage'>Girls</Link></Button>
             </PopoverTrigger>
               <PopoverContent w={'100%'} m={'-8px 0 0 0'}>
                 <PopoverBody p='0' lineHeight='30px' textAlign='left'fontSize={'15px'}>
@@ -316,7 +377,10 @@ const Navbar = () => {
         <WrapItem >
           <Popover trigger={'hover'}>
             <PopoverTrigger>
-              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='50px' fontSize='15px'>Home & Kitchen</Button>
+              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='50px' fontSize={{
+            base: "10px",
+            lg: "15px",
+          }}>Home & Kitchen</Button>
             </PopoverTrigger>
               <PopoverContent w={'100%'}m={'-8px 0 0 0'}>
                 <PopoverBody p='0' lineHeight='30px' textAlign='left'fontSize={'15px'}>
@@ -349,7 +413,10 @@ const Navbar = () => {
         <WrapItem >
           <Popover trigger={'hover'}>
             <PopoverTrigger>
-              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='50px' fontSize='15px'>Beauty & Health</Button>
+              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='50px' fontSize={{
+            base: "10px",
+            lg: "15px",
+          }}>Beauty & Health</Button>
             </PopoverTrigger>
               <PopoverContent w={'100%'} m={'-8px 0 0 0'}>
                 <PopoverBody p='0' lineHeight='30px' textAlign='left'fontSize={'15px'}>
@@ -379,7 +446,10 @@ const Navbar = () => {
         <WrapItem >
           <Popover trigger={'hover'}>
             <PopoverTrigger>
-              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='50px' fontSize='15px'>Jewellery & Accessories</Button>
+              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='50px' fontSize={{
+            base: "10px",
+            lg: "15px",
+          }}>Jewellery & Accessories</Button>
             </PopoverTrigger>
               <PopoverContent w={'100%'} m={'-8px 0 0 0'}>
                 <PopoverBody p='0' lineHeight='30px' textAlign='left'fontSize={'15px'}>
@@ -411,7 +481,10 @@ const Navbar = () => {
         <WrapItem >
           <Popover trigger={'hover'}>
             <PopoverTrigger>
-              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='50px' fontSize='15px'>Bags & Footwear</Button>
+              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='50px' fontSize={{
+            base: "10px",
+            lg: "15px",
+          }}>Bags & Footwear</Button>
             </PopoverTrigger>
               <PopoverContent w={'100%'} m={'-8px 0 0 0'}>
                 <PopoverBody p='0' lineHeight='30px' textAlign='left'fontSize={'15px'}>
@@ -449,7 +522,10 @@ const Navbar = () => {
         <WrapItem >
           <Popover trigger={'hover'}>
             <PopoverTrigger>
-              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='50px' fontSize='15px'>Electronics</Button>
+              <Button colorScheme='none' color='black' p='0' borderRadius='none' _hover={{ color: '#f43397', borderBottom: '3px solid #f43397' }} h='50px' fontSize={{
+            base: "10px",
+            lg: "15px",
+          }}>Electronics</Button>
             </PopoverTrigger>
               <PopoverContent w={'100%'} lineHeight='40px' m={'-8px 0 0 0'}>
                 <PopoverBody p='0' lineHeight='30px' textAlign='left'fontSize={'15px'}>
@@ -472,7 +548,7 @@ const Navbar = () => {
               </PopoverContent>
           </Popover>
         </WrapItem>
-      </Wrap>
+      </Grid>
 
     </HStack>
   </Box>
