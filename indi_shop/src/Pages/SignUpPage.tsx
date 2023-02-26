@@ -35,11 +35,12 @@ export default function SignUpPage() {
   
   const handleSubmit = () => {
     let obj = {
-      id: Date.now(),
-      frist_name: firstName,
-      last_name: lastName,
-      email: email,
+      id: email,
+      name: firstName,
       password: password,
+      mobile: mobileNum,
+      addresses:[],
+      orders:[]
     }
     if(firstName.length == 0 && lastName.length == 0 && 
       email.length == 0 && password.length == 0){
