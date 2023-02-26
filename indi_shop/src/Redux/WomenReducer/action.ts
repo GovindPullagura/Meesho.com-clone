@@ -1,7 +1,13 @@
 import axios, { AxiosResponse } from "axios";
 import { Dispatch } from "react";
 import { axiosObj, product } from "../../constants";
-import { ADD_TO_CART, DATA_FAIL, DATA_REQ, DATA_SUCCESS } from "./actionTypes";
+import {
+  ADD_TO_CART,
+  DATA_FAIL,
+  DATA_REQ,
+  DATA_SUCCESS,
+  GET_CART_DATA,
+} from "./actionTypes";
 
 export const getReqAction = () => {
   return { type: DATA_REQ };
@@ -19,6 +25,9 @@ export const addToCartAction = () => {
   return { type: ADD_TO_CART };
 };
 
+export const getCartDataSuccess = (payload: product[]) => {
+  return { type: GET_CART_DATA, payload };
+};
 // export const getWomenData = async () => {
 //   let res: AxiosResponse<product[]> = await axios.get(
 //     `https://indishop.onrender.com/women`
@@ -53,4 +62,16 @@ export const addToCart = (data: product) => (dispatch: Dispatch<any>) => {
     .post(`https://indishop.onrender.com/cart`, data)
     .then((res) => dispatch(addToCartAction()))
     .catch((err) => dispatch(getReqFailAction()));
+};
+
+export const getcartData = (dispatch: Dispatch<any>) => {
+  axios
+    .get(`https://indishop.onrender.com/cart`)
+    .then((res: AxiosResponse<product[]>) => {
+      dispatch(getCartDataSuccess(res.data));
+    });
+};
+
+export const deleteCartItem = (id: number) => {
+  return axios.delete(`https://indishop.onrender.com/cart/${id}`);
 };

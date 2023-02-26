@@ -8,7 +8,9 @@ import {
   Radio,
   RadioGroup,
   Spacer,
+  Text,
   Stack,
+  Image,
 } from "@chakra-ui/react";
 import React, { Dispatch, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -18,6 +20,8 @@ import { axiosObj, effectParams, initData, product, state } from "../constants";
 import { addToCart, getMenData } from "../Redux/WomenReducer/action";
 import ProductCard from "../Components/ProductCard";
 import { useLocation, useSearchParams } from "react-router-dom";
+import Navbar from "../Components/Navbar";
+import { Footer } from "../Components/Footer";
 
 const MenPage = () => {
   // getting the data from store:
@@ -121,20 +125,21 @@ const MenPage = () => {
 
   return (
     <Box>
-      <Flex>
+      <Navbar />
+      <Flex mt="30px">
         <Stack
           p="10px"
           w={{ base: "50%", md: "30%", lg: "10%" }}
           direction={"column"}
         >
-          <Box mt="100px">
+          <Box>
             <Heading fontSize={"15px"}>Sort by price:</Heading>
             <RadioGroup defaultValue={order}>
               <Flex direction="column">
-                <Radio onChange={handlePrice} value="desc">
+                <Radio colorScheme="pink" onChange={handlePrice} value="desc">
                   High to Low
                 </Radio>
-                <Radio onChange={handlePrice} value="asc">
+                <Radio colorScheme="pink" onChange={handlePrice} value="asc">
                   Low to High
                 </Radio>
               </Flex>
@@ -146,6 +151,7 @@ const MenPage = () => {
               <Heading fontSize={"15px"}>Colour</Heading>
               <Flex direction={"column"}>
                 <Checkbox
+                  colorScheme="pink"
                   value={"White"}
                   isChecked={colour.includes("White")}
                   onChange={handlecolour}
@@ -153,6 +159,7 @@ const MenPage = () => {
                   White
                 </Checkbox>
                 <Checkbox
+                  colorScheme="pink"
                   value={"Pink"}
                   isChecked={colour.includes("Pink")}
                   onChange={handlecolour}
@@ -160,6 +167,7 @@ const MenPage = () => {
                   Pink
                 </Checkbox>
                 <Checkbox
+                  colorScheme="pink"
                   value={"Black"}
                   isChecked={colour.includes("Black")}
                   onChange={handlecolour}
@@ -167,6 +175,7 @@ const MenPage = () => {
                   Black
                 </Checkbox>
                 <Checkbox
+                  colorScheme="pink"
                   value={"Blue"}
                   isChecked={colour.includes("Blue")}
                   onChange={handlecolour}
@@ -174,6 +183,7 @@ const MenPage = () => {
                   Blue
                 </Checkbox>
                 <Checkbox
+                  colorScheme="pink"
                   value={"Beige"}
                   isChecked={colour.includes("Beige")}
                   onChange={handlecolour}
@@ -181,6 +191,7 @@ const MenPage = () => {
                   Beige
                 </Checkbox>
                 <Checkbox
+                  colorScheme="pink"
                   value={"Green"}
                   isChecked={colour.includes("Green")}
                   onChange={handlecolour}
@@ -188,6 +199,7 @@ const MenPage = () => {
                   Green
                 </Checkbox>
                 <Checkbox
+                  colorScheme="pink"
                   value={"Grey"}
                   isChecked={colour.includes("Grey")}
                   onChange={handlecolour}
@@ -195,6 +207,7 @@ const MenPage = () => {
                   Grey
                 </Checkbox>
                 <Checkbox
+                  colorScheme="pink"
                   value={"Red"}
                   isChecked={colour.includes("Red")}
                   onChange={handlecolour}
@@ -208,6 +221,7 @@ const MenPage = () => {
             <Heading fontSize={"15px"}>Categories</Heading>
             <Flex direction={"column"}>
               <Checkbox
+                colorScheme="pink"
                 value={"T-shirt"}
                 isChecked={category.includes("T-shirt")}
                 onChange={handleCategory}
@@ -215,6 +229,7 @@ const MenPage = () => {
                 T-Shirt
               </Checkbox>
               <Checkbox
+                colorScheme="pink"
                 value={"Shirt"}
                 isChecked={category.includes("Shirt")}
                 onChange={handleCategory}
@@ -222,6 +237,7 @@ const MenPage = () => {
                 Shirt
               </Checkbox>
               <Checkbox
+                colorScheme="pink"
                 value={"Trouser"}
                 isChecked={category.includes("Trouser")}
                 onChange={handleCategory}
@@ -234,6 +250,7 @@ const MenPage = () => {
             <Heading fontSize={"15px"}>Size</Heading>
             <Flex direction={"column"}>
               <Checkbox
+                colorScheme="pink"
                 value={"S"}
                 isChecked={size.includes("S")}
                 onChange={handleSize}
@@ -241,6 +258,7 @@ const MenPage = () => {
                 Small (S)
               </Checkbox>
               <Checkbox
+                colorScheme="pink"
                 value={"M"}
                 isChecked={size.includes("M")}
                 onChange={handleSize}
@@ -248,6 +266,7 @@ const MenPage = () => {
                 Mediun (M)
               </Checkbox>
               <Checkbox
+                colorScheme="pink"
                 value={"L"}
                 isChecked={size.includes("L")}
                 onChange={handleSize}
@@ -255,6 +274,7 @@ const MenPage = () => {
                 Large (L)
               </Checkbox>
               <Checkbox
+                colorScheme="pink"
                 value={"XL"}
                 isChecked={size.includes("XL")}
                 onChange={handleSize}
@@ -262,6 +282,7 @@ const MenPage = () => {
                 XL
               </Checkbox>
               <Checkbox
+                colorScheme="pink"
                 value={"XXL"}
                 isChecked={size.includes("XXL")}
                 onChange={handleSize}
@@ -319,29 +340,45 @@ const MenPage = () => {
           </Box>
         </Stack>
         <Spacer />
-        <Grid
-          templateColumns={{
-            base: "repeat(1,1fr)",
-            md: "repeat(2,1fr)",
-            lg: "repeat(4, 1fr)",
-          }}
-          w="80%"
-          gap={4}
-        >
-          {isLoading ? (
-            <Heading>Loading...</Heading>
-          ) : isError ? (
-            <Heading>Something went wrong...</Heading>
-          ) : (
-            products.map((el) => (
-              <GridItem key={el.id}>
-                <ProductCard {...el} handleAdd={() => handleAdd(el)} />
-              </GridItem>
-            ))
-          )}
-        </Grid>
+        {isLoading ? (
+          <Heading>Loading...</Heading>
+        ) : isError ? (
+          <Heading>Something went wrong...</Heading>
+        ) : products.length === 0 ? (
+          <Box alignItems={"center"} ml="10%" mt="15%">
+            <Image
+              w="60%"
+              src="https://www.meesho.com/assets/Search/no_results.svg"
+            />
+            <Heading fontSize={"25px"}>No matching products found</Heading>
+            <Text>Search for something else</Text>
+          </Box>
+        ) : (
+          <Grid
+            templateColumns={{
+              base: "repeat(1,1fr)",
+              md: "repeat(2,1fr)",
+              lg: "repeat(4, 1fr)",
+            }}
+            w="80%"
+            gap={4}
+          >
+            {isLoading ? (
+              <Heading>Loading...</Heading>
+            ) : isError ? (
+              <Heading>Something went wrong...</Heading>
+            ) : (
+              products.map((el) => (
+                <GridItem key={el.id}>
+                  <ProductCard {...el} handleAdd={() => handleAdd(el)} />
+                </GridItem>
+              ))
+            )}
+          </Grid>
+        )}
         <Spacer />
       </Flex>
+      <Footer />
     </Box>
   );
 };

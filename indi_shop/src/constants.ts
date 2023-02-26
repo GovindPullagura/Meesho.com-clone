@@ -17,11 +17,12 @@ export type initData = {
   isLoading: boolean;
   isError: boolean;
   products: [] | product[];
+  cart: [] | product[];
 };
 
 export type state = {
   womenData: initData;
-  allProductData:initData;
+  allProductData: initData;
 };
 
 export type paramsObj = {
@@ -44,5 +45,3 @@ export type effectParams = {
 export type axiosObj = {
   params: paramsObj;
 };
-
-

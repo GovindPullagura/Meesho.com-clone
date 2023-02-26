@@ -18,51 +18,59 @@ import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useToast } from '@chakra-ui/react'
-
+import { useToast } from "@chakra-ui/react";
+import { useDispatch } from "react-redux";
+import { login } from "../Redux/AuthReducer/action";
+import { Footer } from "../Components/Footer";
 
 export default function LoginPage() {
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const toast = useToast()
+  const toast = useToast();
 
   const handleSubmit = () => {
     let obj = {
       email: email,
-      password: password
-    }
+      password: password,
+    };
     axios
       .get(`https://indishop.onrender.com/users`)
       .then((r) => {
         let data = r.data;
+        console.log(data);
         for (let i = 0; i < data.length; i++) {
-          if (data[i].email === email && data[i].password === password) {
+          if (data[i].id === email && data[i].password === password) {
             toast({
-              title: 'Login Successfull.',
-              status: 'success',
+              title: "Login Successfull.",
+              status: "success",
               duration: 4000,
               isClosable: true,
-            })
+            });
             localStorage.setItem("user", JSON.stringify(data[i]));
-            navigate("/")
+            // **********************
+            // @ts-ignore
+            dispatch(login());
+            // **********************
+            navigate("/");
             return;
           }
         }
         toast({
-          title: 'Login Failed  Please Sign Up.',
-          status: 'error',
+          title: "Login Failed  Please Sign Up.",
+          status: "error",
           duration: 4000,
           isClosable: true,
-        })
-        navigate("/signup")
+        });
+        navigate("/signup");
       })
       .catch((e) => {
         console.log(e);
         alert("error");
-      })
-  }
+      });
+  };
 
   return (
     <Box>
@@ -93,12 +101,22 @@ export default function LoginPage() {
               <Stack spacing={3}>
                 <FormControl id="email" isRequired>
                   <FormLabel>Email address</FormLabel>
-                  <Input type="email" onChange={(e) => setEmail(e.target.value)} value={email} name="email" />
+                  <Input
+                    type="email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                    name="email"
+                  />
                 </FormControl>
                 <FormControl id="password" isRequired>
                   <FormLabel>Password</FormLabel>
                   <InputGroup>
-                    <Input type={showPassword ? "text" : "password"} onChange={(e) => setPassword(e.target.value)} value={password} name="password" />
+                    <Input
+                      type={showPassword ? "text" : "password"}
+                      onChange={(e) => setPassword(e.target.value)}
+                      value={password}
+                      name="password"
+                    />
                     <InputRightElement h={"full"}>
                       <Button
                         variant={"ghost"}
@@ -148,6 +166,7 @@ export default function LoginPage() {
           </Stack>
         </Flex>
       </Box>
+      <Footer />
     </Box>
   );
 }
