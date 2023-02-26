@@ -17,6 +17,7 @@ export type initData = {
   isLoading: boolean;
   isError: boolean;
   products: [] | product[];
+  cart: [] | product[];
 };
 
 export type state = {
@@ -44,5 +45,6 @@ export type effectParams = {
 export type axiosObj = {
   params: paramsObj;
 };
+
 
 
