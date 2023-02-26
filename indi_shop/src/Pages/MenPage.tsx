@@ -20,6 +20,8 @@ import { axiosObj, effectParams, initData, product, state } from "../constants";
 import { addToCart, getMenData } from "../Redux/WomenReducer/action";
 import ProductCard from "../Components/ProductCard";
 import { useLocation, useSearchParams } from "react-router-dom";
+import Navbar from "../Components/Navbar";
+import { Footer } from "../Components/Footer";
 
 const MenPage = () => {
   // getting the data from store:
@@ -123,13 +125,14 @@ const MenPage = () => {
 
   return (
     <Box>
-      <Flex>
+      <Navbar />
+      <Flex mt="30px">
         <Stack
           p="10px"
           w={{ base: "50%", md: "30%", lg: "10%" }}
           direction={"column"}
         >
-          <Box mt="100px">
+          <Box>
             <Heading fontSize={"15px"}>Sort by price:</Heading>
             <RadioGroup defaultValue={order}>
               <Flex direction="column">
@@ -375,6 +378,7 @@ const MenPage = () => {
         )}
         <Spacer />
       </Flex>
+      <Footer />
     </Box>
   );
 };

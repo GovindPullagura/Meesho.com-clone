@@ -45,4 +45,3 @@ export type effectParams = {
 export type axiosObj = {
   params: paramsObj;
 };
-
