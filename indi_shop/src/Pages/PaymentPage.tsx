@@ -39,12 +39,12 @@ export const PaymentPage = () => {
   let cartObj = { user: userData.name, products: cart, total: totalPrice };
   // console.log(totalPrice);
 
+  //
   const handlePayment = async () => {
-    axios.post(`https://indishop.onrender.com/orders`, cartObj).then(() => {
-      // alert(`Order placed successfully`);
-      axios.delete(`https://indishop.onrender.com/${cart}`);
-      // navigate("/");
-    });
+    axios
+      .post(`https://indishop.onrender.com/orders`, cartObj)
+      // @ts-ignore
+      .then(navigate("/"));
   };
 
   useEffect(() => {
