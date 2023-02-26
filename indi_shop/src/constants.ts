@@ -22,7 +22,7 @@ export type initData = {
 
 export type state = {
   womenData: initData;
-  allProductData:initData;
+  allProductData: initData;
 };
 
 export type paramsObj = {
@@ -45,6 +45,4 @@ export type effectParams = {
 export type axiosObj = {
   params: paramsObj;
 };
-
-
 

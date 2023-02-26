@@ -5,10 +5,12 @@ import {
   Grid,
   GridItem,
   Heading,
+  Image,
   Radio,
   RadioGroup,
   Spacer,
   Stack,
+  Text,
 } from "@chakra-ui/react";
 import React, { Dispatch, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -121,20 +123,20 @@ const WomenPage = () => {
 
   return (
     <Box>
-      <Flex>
+      <Flex mt="30px">
         <Stack
           p="10px"
           w={{ base: "50%", md: "30%", lg: "10%" }}
           direction={"column"}
         >
-          <Box mt="100px">
+          <Box>
             <Heading fontSize={"15px"}>Sort by price:</Heading>
             <RadioGroup defaultValue={order}>
               <Flex direction="column">
-                <Radio onChange={handlePrice} value="desc">
+                <Radio colorScheme="pink" onChange={handlePrice} value="desc">
                   High to Low
                 </Radio>
-                <Radio onChange={handlePrice} value="asc">
+                <Radio colorScheme="pink" onChange={handlePrice} value="asc">
                   Low to High
                 </Radio>
               </Flex>
@@ -147,6 +149,7 @@ const WomenPage = () => {
               <Flex direction={"column"}>
                 <Checkbox
                   value={"White"}
+                  colorScheme="pink"
                   isChecked={colour.includes("White")}
                   onChange={handlecolour}
                 >
@@ -154,6 +157,7 @@ const WomenPage = () => {
                 </Checkbox>
                 <Checkbox
                   value={"Pink"}
+                  colorScheme="pink"
                   isChecked={colour.includes("Pink")}
                   onChange={handlecolour}
                 >
@@ -161,6 +165,7 @@ const WomenPage = () => {
                 </Checkbox>
                 <Checkbox
                   value={"Black"}
+                  colorScheme="pink"
                   isChecked={colour.includes("Black")}
                   onChange={handlecolour}
                 >
@@ -168,6 +173,7 @@ const WomenPage = () => {
                 </Checkbox>
                 <Checkbox
                   value={"Blue"}
+                  colorScheme="pink"
                   isChecked={colour.includes("Blue")}
                   onChange={handlecolour}
                 >
@@ -175,6 +181,7 @@ const WomenPage = () => {
                 </Checkbox>
                 <Checkbox
                   value={"Beige"}
+                  colorScheme="pink"
                   isChecked={colour.includes("Beige")}
                   onChange={handlecolour}
                 >
@@ -182,6 +189,7 @@ const WomenPage = () => {
                 </Checkbox>
                 <Checkbox
                   value={"Green"}
+                  colorScheme="pink"
                   isChecked={colour.includes("Green")}
                   onChange={handlecolour}
                 >
@@ -189,6 +197,7 @@ const WomenPage = () => {
                 </Checkbox>
                 <Checkbox
                   value={"Grey"}
+                  colorScheme="pink"
                   isChecked={colour.includes("Grey")}
                   onChange={handlecolour}
                 >
@@ -196,6 +205,7 @@ const WomenPage = () => {
                 </Checkbox>
                 <Checkbox
                   value={"Red"}
+                  colorScheme="pink"
                   isChecked={colour.includes("Red")}
                   onChange={handlecolour}
                 >
@@ -208,6 +218,7 @@ const WomenPage = () => {
             <Heading fontSize={"15px"}>Categories</Heading>
             <Flex direction={"column"}>
               <Checkbox
+                colorScheme="pink"
                 value={"T-shirt"}
                 isChecked={category.includes("T-shirt")}
                 onChange={handleCategory}
@@ -215,6 +226,7 @@ const WomenPage = () => {
                 T-Shirt
               </Checkbox>
               <Checkbox
+                colorScheme="pink"
                 value={"Kurti"}
                 isChecked={category.includes("Kurti")}
                 onChange={handleCategory}
@@ -223,6 +235,7 @@ const WomenPage = () => {
               </Checkbox>
               <Checkbox
                 value={"Saree"}
+                colorScheme="pink"
                 isChecked={category.includes("Saree")}
                 onChange={handleCategory}
               >
@@ -234,6 +247,7 @@ const WomenPage = () => {
             <Heading fontSize={"15px"}>Size</Heading>
             <Flex direction={"column"}>
               <Checkbox
+                colorScheme="pink"
                 value={"Regular"}
                 isChecked={size.includes("Regular")}
                 onChange={handleSize}
@@ -241,6 +255,7 @@ const WomenPage = () => {
                 Regular
               </Checkbox>
               <Checkbox
+                colorScheme="pink"
                 value={"S"}
                 isChecked={size.includes("S")}
                 onChange={handleSize}
@@ -248,6 +263,7 @@ const WomenPage = () => {
                 Small (S)
               </Checkbox>
               <Checkbox
+                colorScheme="pink"
                 value={"M"}
                 isChecked={size.includes("M")}
                 onChange={handleSize}
@@ -255,6 +271,7 @@ const WomenPage = () => {
                 Mediun (M)
               </Checkbox>
               <Checkbox
+                colorScheme="pink"
                 value={"L"}
                 isChecked={size.includes("L")}
                 onChange={handleSize}
@@ -262,6 +279,7 @@ const WomenPage = () => {
                 Large (L)
               </Checkbox>
               <Checkbox
+                colorScheme="pink"
                 value={"XL"}
                 isChecked={size.includes("XL")}
                 onChange={handleSize}
@@ -269,6 +287,7 @@ const WomenPage = () => {
                 XL
               </Checkbox>
               <Checkbox
+                colorScheme="pink"
                 value={"XXL"}
                 isChecked={size.includes("XXL")}
                 onChange={handleSize}
@@ -282,6 +301,7 @@ const WomenPage = () => {
             <Flex direction={"column"}>
               <Checkbox
                 value={"Nike"}
+                colorScheme="pink"
                 isChecked={brand.includes("Nike")}
                 onChange={handleBrand}
               >
@@ -289,6 +309,7 @@ const WomenPage = () => {
               </Checkbox>
               <Checkbox
                 value={"Roadster"}
+                colorScheme="pink"
                 isChecked={brand.includes("Roadster")}
                 onChange={handleBrand}
               >
@@ -296,6 +317,7 @@ const WomenPage = () => {
               </Checkbox>
               <Checkbox
                 value={"Lee"}
+                colorScheme="pink"
                 isChecked={brand.includes("Lee")}
                 onChange={handleBrand}
               >
@@ -303,6 +325,7 @@ const WomenPage = () => {
               </Checkbox>
               <Checkbox
                 value={"UCB"}
+                colorScheme="pink"
                 isChecked={brand.includes("UCB")}
                 onChange={handleBrand}
               >
@@ -310,6 +333,7 @@ const WomenPage = () => {
               </Checkbox>
               <Checkbox
                 value={"HRX"}
+                colorScheme="pink"
                 isChecked={brand.includes("HRX")}
                 onChange={handleBrand}
               >
@@ -317,6 +341,7 @@ const WomenPage = () => {
               </Checkbox>
               <Checkbox
                 value={"Louis Philippe"}
+                colorScheme="pink"
                 isChecked={brand.includes("Louis Philippe")}
                 onChange={handleBrand}
               >
@@ -326,27 +351,42 @@ const WomenPage = () => {
           </Box>
         </Stack>
         <Spacer />
-        <Grid
-          templateColumns={{
-            base: "repeat(1,1fr)",
-            md: "repeat(2,1fr)",
-            lg: "repeat(4, 1fr)",
-          }}
-          w="80%"
-          gap={4}
-        >
-          {isLoading ? (
-            <Heading>Loading...</Heading>
-          ) : isError ? (
-            <Heading>Something went wrong...</Heading>
-          ) : (
-            products.map((el) => (
-              <GridItem key={el.id}>
-                <ProductCard {...el} handleAdd={() => handleAdd(el)} />
-              </GridItem>
-            ))
-          )}
-        </Grid>
+        {isLoading ? (
+          <Heading>Loading...</Heading>
+        ) : isError ? (
+          <Heading>Something went wrong...</Heading>
+        ) : products.length === 0 ? (
+          <Box alignItems={"center"} ml="10%" mt="15%">
+            <Image
+              w="60%"
+              src="https://www.meesho.com/assets/Search/no_results.svg"
+            />
+            <Heading fontSize={"25px"}>No matching products found</Heading>
+            <Text>Search for something else</Text>
+          </Box>
+        ) : (
+          <Grid
+            templateColumns={{
+              base: "repeat(1,1fr)",
+              md: "repeat(2,1fr)",
+              lg: "repeat(4, 1fr)",
+            }}
+            w="80%"
+            gap={4}
+          >
+            {isLoading ? (
+              <Heading>Loading...</Heading>
+            ) : isError ? (
+              <Heading>Something went wrong...</Heading>
+            ) : (
+              products.map((el) => (
+                <GridItem key={el.id}>
+                  <ProductCard {...el} handleAdd={() => handleAdd(el)} />
+                </GridItem>
+              ))
+            )}
+          </Grid>
+        )}
         <Spacer />
       </Flex>
     </Box>
