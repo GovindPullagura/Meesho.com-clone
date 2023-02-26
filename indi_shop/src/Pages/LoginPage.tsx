@@ -19,9 +19,12 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useToast } from '@chakra-ui/react'
+import { useDispatch } from 'react-redux';
+import { login } from "../Redux/AuthReducer/action";
 
 
 export default function LoginPage() {
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState('');
@@ -37,8 +40,9 @@ export default function LoginPage() {
       .get(`https://indishop.onrender.com/users`)
       .then((r) => {
         let data = r.data;
+        console.log(data)
         for (let i = 0; i < data.length; i++) {
-          if (data[i].email === email && data[i].password === password) {
+          if (data[i].id === email && data[i].password === password) {
             toast({
               title: 'Login Successfull.',
               status: 'success',
@@ -46,6 +50,10 @@ export default function LoginPage() {
               isClosable: true,
             })
             localStorage.setItem("user", JSON.stringify(data[i]));
+            // **********************
+            // @ts-ignore
+            dispatch(login());
+            // **********************
             navigate("/")
             return;
           }

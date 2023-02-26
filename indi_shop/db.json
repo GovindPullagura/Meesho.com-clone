@@ -603,6 +603,14 @@
       "last_name": "sai",
       "email": "manjusai083@gmail.com",
       "password": ""
+    },
+    {
+      "id": "nandan3512@gmail.com",
+      "name": "Nandan",
+      "password": "qwe123",
+      "mobile": "9325491615",
+      "addresses": [],
+      "orders": []
     }
   ],
   "logout": [

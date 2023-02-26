@@ -12,6 +12,7 @@ import MenPage from "../Pages/MenPage";
 import SignUpPage from "../Pages/SignUpPage";
 import SingleProductPage from "../Pages/SingleProductPage";
 import WomenPage from "../Pages/WomenPage";
+import { PrivateRoute } from "./PrivateRoute";
 
 const AllRoutes = () => {
   return (
@@ -23,14 +24,13 @@ const AllRoutes = () => {
       <Route path="/womenPage" element={<WomenPage />} />
       <Route path="/boysPage" element={<BoysPage />} />
       <Route path="/girlsPage" element={<GirlsPage />} />
-      <Route path="/cart" element={<CartPage />} />
-      <Route path="/checkout" element={<CheckoutPage />} />
+      <Route path="/cart" element={<PrivateRoute><CartPage /></PrivateRoute>} />
+      <Route path="/checkout" element={<PrivateRoute><CheckoutPage /></PrivateRoute>} />
       <Route
         path="/productDetails/:gender/:id"
         element={<SingleProductPage />}
       />
-      <Route path="/checkout" element={<CheckoutPage />} />
-      <Route path="/admin/*" element={<AdminHome />} />
+      <Route path="/admin/*" element={<PrivateRoute><AdminHome /></PrivateRoute>} />
     </Routes>
   );
 };
