@@ -62,7 +62,8 @@ This project was created by Team Indi-Shop. The Team Members are
 
 Names - Github Username.
 
-1.Govind - GovindPullagura.
+1.Govind - GovindPullagura
+<br> 
 2.Nandhan - nanksi.
 3.Manju Sai - rsaimanjunathnaik083.
 4.Vibhor - winwithvibhor.
