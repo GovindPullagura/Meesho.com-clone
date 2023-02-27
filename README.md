@@ -39,11 +39,13 @@ Indi Shop offers a range of features to users, including:
 ## Technologies Used
 Indi Shop has been built using the following technologies:
 
-React: A JavaScript library for building user interfaces.
-Redux: A predictable state container for JavaScript apps.
-React Router: A popular routing library for React.
-Chakra-UI: A popular UI component library for React.
-Render.com: A popular backend-as-a-service platform that provides authentication, database, and hosting services.
+1. React: A JavaScript library for building user interfaces.
+2. Redux: A predictable state container for JavaScript apps.
+3. React Router: A popular routing library for React.
+4. Chakra-UI: A popular UI component library for React.
+5. Render.com: A popular backend-as-a-service platform that provides authentication, database, and hosting services.
+
+
 Contributing
 If you would like to contribute to this project, you can follow these steps:
 
