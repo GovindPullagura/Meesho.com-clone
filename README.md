@@ -61,11 +61,14 @@ Create a pull request to the main repository
 This project was created by Team Indi-Shop. The Team Members are 
 
 Names - Github Username.
+<br> 
 
 1.Govind - GovindPullagura
 <br> 
 2.Nandhan - nanksi.
+<br> 
 3.Manju Sai - rsaimanjunathnaik083.
+<br> 
 4.Vibhor - winwithvibhor.
 
 License
