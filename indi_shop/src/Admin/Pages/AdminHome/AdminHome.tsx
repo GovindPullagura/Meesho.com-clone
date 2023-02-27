@@ -1,11 +1,9 @@
-import React from "react";
-import { AdminRoutes } from "../AdminRoutes";
+import SidebarWithHeader from "../../Components/Sidebar";
 
 export const AdminHome = () => {
   return (
     <div>
-      {/* <h1>Admin Home</h1> */}
-      <AdminRoutes />
+      <SidebarWithHeader />
     </div>
   );
 };
