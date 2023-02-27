@@ -10,7 +10,7 @@ export const AdminRoutes = () => {
   return (
     <>
       <Routes>
-        <Route index element={<Dashboard />} />
+        <Route index element={<Products />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/users" element={<Users />} />

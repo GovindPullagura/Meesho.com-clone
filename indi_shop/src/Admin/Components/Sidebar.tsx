@@ -32,19 +32,24 @@ import {
   FiChevronDown,
 } from "react-icons/fi";
 import { MdAddShoppingCart } from "react-icons/md";
+import { AiOutlineHome } from "react-icons/ai";
 import { IconType } from "react-icons";
 import { ReactText } from "react";
+import { AdminRoutes } from "../Pages/AdminRoutes";
 
 interface LinkItemProps {
   name: string;
   icon: IconType;
+  path: string;
 }
+
 const LinkItems: Array<LinkItemProps> = [
-  { name: "Dashboard", icon: FiHome },
-  { name: "Users", icon: FiUsers },
-  { name: "Orders", icon: FiShoppingBag },
-  { name: "Products", icon: FiShoppingCart },
-  { name: "Add Product", icon: MdAddShoppingCart },
+  { name: "Dashboard", icon: FiHome, path: "/admin/dashboard" },
+  { name: "Users", icon: FiUsers, path: "/admin/users" },
+  { name: "Orders", icon: FiShoppingBag, path: "/admin/orders" },
+  { name: "Products", icon: FiShoppingCart, path: "/admin/products" },
+  { name: "Add Product", icon: MdAddShoppingCart, path: "/admin/add-product" },
+  { name: "Home", icon: AiOutlineHome, path: "/" },
 ];
 
 export default function SidebarWithHeader({
@@ -75,7 +80,7 @@ export default function SidebarWithHeader({
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} />
       <Box ml={{ base: 0, md: 60 }} p="4">
-        {children}
+        <AdminRoutes />
       </Box>
     </Box>
   );
@@ -104,7 +109,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon}>
+        <NavItem key={link.name} icon={link.icon} path={link.path}>
           {link.name}
         </NavItem>
       ))}
@@ -115,11 +120,12 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 interface NavItemProps extends FlexProps {
   icon: IconType;
   children: ReactText;
+  path: string;
 }
-const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
+const NavItem = ({ icon, children, path, ...rest }: NavItemProps) => {
   return (
     <Link
-      href="#"
+      href={path}
       style={{ textDecoration: "none" }}
       _focus={{ boxShadow: "none" }}
     >

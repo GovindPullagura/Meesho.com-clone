@@ -11,6 +11,13 @@ export type product = {
   size: string;
 };
 
+export type order = {
+  id: string;
+  user: string;
+  products: [] | product[];
+  total: number;
+};
+
 export type ReducerAction = { type?: string; payload?: [] | product[] };
 
 export type initData = {
@@ -18,11 +25,13 @@ export type initData = {
   isError: boolean;
   products: [] | product[];
   cart: [] | product[];
+  orders?: [] | order[];
 };
 
 export type state = {
   womenData: initData;
   allProductData: initData;
+  admin: initData;
 };
 
 export type paramsObj = {
