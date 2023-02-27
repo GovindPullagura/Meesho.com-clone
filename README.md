@@ -10,7 +10,7 @@ Install the dependencies using npm install
 Start the development server using npm start
 This will start the development server at http://localhost:3000.
 
-Features
+Features:
 Indi Shop offers a range of features to users, including:
 
 ### Home Page with Categories:
