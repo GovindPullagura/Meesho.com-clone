@@ -1,6 +1,8 @@
 # Indi Shop
 Indi Shop is an e-commerce platform that is a clone of the popular Indian e-commerce website meesho.com. This platform has been built using React and Redux, and is designed to provide an easy-to-use, mobile-friendly shopping experience for users.
 
+Deployed Link : https://indishop.netlify.app/
+
 Installation
 To install and run this project on your local machine, follow these steps:
 
@@ -13,25 +15,25 @@ This will start the development server at http://localhost:3000.
 Features:
 Indi Shop offers a range of features to users, including:
 
-### Home Page with Categories:
+## Home Page with Categories:
 <img width="956" alt="image" src="https://user-images.githubusercontent.com/110287987/221488494-c549903c-e2b8-4acc-ae0f-04253eea9834.png">
 
-### Product listings with Filters and Sorting:
+## Product listings with Filters and Sorting:
 <img width="955" alt="image" src="https://user-images.githubusercontent.com/110287987/221488676-e29df637-702b-44a9-8fde-1ecb5165d8ad.png">
 
-### Shopping cart: 
+## Shopping cart: 
 <img width="951" alt="image" src="https://user-images.githubusercontent.com/110287987/221488772-d5a0b7a7-faf7-42f0-a72a-572531a96b31.png">
 
-### Checkout Page:
+## Checkout Page:
 <img width="958" alt="image" src="https://user-images.githubusercontent.com/110287987/221488884-00d55fb2-d858-4291-8a71-90810318cf66.png">
 
-### User authentication:
+## User authentication:
 <img width="959" alt="image" src="https://user-images.githubusercontent.com/110287987/221489095-340f9982-87f5-4598-b231-8ce761e6bea1.png">
 
-### Category filtering
+## Category filtering
 <img width="958" alt="image" src="https://user-images.githubusercontent.com/110287987/221489452-3ef739ac-88ff-499f-a620-ddf014ab03d3.png">
 
-### Dedicated Admin Panel for product update and deletion:
+## Dedicated Admin Panel for product update and deletion:
 <img width="959" alt="image" src="https://user-images.githubusercontent.com/110287987/221489667-1f696b01-4862-44d2-b236-4dd6686ff699.png">
 
 ## Technologies Used
@@ -50,8 +52,9 @@ Create a new branch for your feature or bug fix using git checkout -b your-featu
 Make your changes and commit them using git commit -am 'Add some feature'
 Push your changes to your fork using git push origin your-feature-branch
 Create a pull request to the main repository
-Credits
-This project was created by Your Name. Special thanks to the contributors who helped build this project.
+
+## Credits
+This project was created by Team Indi-Shop. The Team Members are Govind, Nandhan, Manju Sai and Vibhor.
 
 License
 This project is licensed under the MIT License. See the LICENSE file for details.
