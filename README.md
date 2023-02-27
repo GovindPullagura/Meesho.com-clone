@@ -6,12 +6,11 @@ Indi Shop is an e-commerce platform that is a clone of the popular Indian e-comm
 ## Technologies Used
 Indi Shop has been built using the following technologies:
 
-1. React: A JavaScript library for building user interfaces.
+1. React with TypeScript: A JavaScript library for building user interfaces. TypeScript A superset of JavaScript for better typechecking and bug free environment
 2. Redux: A predictable state container for JavaScript apps.
 3. React Router: A popular routing library for React.
 4. Chakra-UI: A popular UI component library for React.
 5. Render.com: A popular backend-as-a-service platform that provides authentication, database, and hosting services.
-6. TypeScript: A superset of JavaScript for better typechecking and bug free environment
 
 Names - Github Username.
 <br> 
