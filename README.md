@@ -46,7 +46,8 @@ Indi Shop has been built using the following technologies:
 5. Render.com: A popular backend-as-a-service platform that provides authentication, database, and hosting services.
 
 
-Contributing
+### Contributing:
+
 If you would like to contribute to this project, you can follow these steps:
 
 Fork the repository
