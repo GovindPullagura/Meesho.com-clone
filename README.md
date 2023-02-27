@@ -15,7 +15,6 @@ Indi Shop has been built using the following technologies:
 ## Credits
 This project was created by Team Indi-Shop. The Team Members are 
 <br>
-Name - Github Username.
 
 1.Govind - GovindPullagura
 <br> 
