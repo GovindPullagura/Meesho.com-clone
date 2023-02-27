@@ -58,7 +58,14 @@ Push your changes to your fork using git push origin your-feature-branch
 Create a pull request to the main repository
 
 ## Credits
-This project was created by Team Indi-Shop. The Team Members are Govind, Nandhan, Manju Sai and Vibhor.
+This project was created by Team Indi-Shop. The Team Members are 
+
+Names - Github Username
+
+1.Govind - GovindPullagura
+2.Nandhan - nanksi
+3.Manju Sai - rsaimanjunathnaik083
+4.Vibhor - winwithvibhor
 
 License
 This project is licensed under the MIT License. See the LICENSE file for details.
