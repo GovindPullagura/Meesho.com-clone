@@ -12,7 +12,9 @@ Indi Shop has been built using the following technologies:
 4. Chakra-UI: A popular UI component library for React.
 5. Render.com: A popular backend-as-a-service platform that provides authentication, database, and hosting services.
 
-### Contributers
+## Credits
+This project was created by Team Indi-Shop. The Team Members are 
+<br>
 Name - Github Username.
 <br> 
 
@@ -66,9 +68,6 @@ Create a new branch for your feature or bug fix using git checkout -b your-featu
 Make your changes and commit them using git commit -am 'Add some feature'
 Push your changes to your fork using git push origin your-feature-branch
 Create a pull request to the main repository
-
-## Credits
-This project was created by Team Indi-Shop. The Team Members are 
 
 License
 This project is licensed under the MIT License. See the LICENSE file for details.
