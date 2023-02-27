@@ -12,6 +12,7 @@ Indi Shop has been built using the following technologies:
 4. Chakra-UI: A popular UI component library for React.
 5. Render.com: A popular backend-as-a-service platform that provides authentication, database, and hosting services.
 
+### Contributers
 Names - Github Username.
 <br> 
 
