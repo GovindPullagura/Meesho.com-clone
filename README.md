@@ -3,6 +3,27 @@ Indi Shop is an e-commerce platform that is a clone of the popular Indian e-comm
 
 ## Deployed Link : https://indishop.netlify.app/
 
+## Technologies Used
+Indi Shop has been built using the following technologies:
+
+1. React: A JavaScript library for building user interfaces.
+2. Redux: A predictable state container for JavaScript apps.
+3. React Router: A popular routing library for React.
+4. Chakra-UI: A popular UI component library for React.
+5. Render.com: A popular backend-as-a-service platform that provides authentication, database, and hosting services.
+6. TypeScript: A superset of JavaScript for better typechecking and bug free environment
+
+Names - Github Username.
+<br> 
+
+1.Govind - GovindPullagura
+<br> 
+2.Nandhan - nanksi.
+<br> 
+3.Manju Sai - rsaimanjunathnaik083.
+<br> 
+4.Vibhor - winwithvibhor.
+
 Installation
 To install and run this project on your local machine, follow these steps:
 
@@ -36,17 +57,6 @@ Indi Shop offers a range of features to users, including:
 ## Dedicated Admin Panel for product update and deletion:
 <img width="959" alt="image" src="https://user-images.githubusercontent.com/110287987/221489667-1f696b01-4862-44d2-b236-4dd6686ff699.png">
 
-## Technologies Used
-Indi Shop has been built using the following technologies:
-
-1. React: A JavaScript library for building user interfaces.
-2. Redux: A predictable state container for JavaScript apps.
-3. React Router: A popular routing library for React.
-4. Chakra-UI: A popular UI component library for React.
-5. Render.com: A popular backend-as-a-service platform that provides authentication, database, and hosting services.
-6. TypeScript: A superset of JavaScript for better typechecking and bug free environment
-
-
 ### Contributing:
 
 If you would like to contribute to this project, you can follow these steps:
@@ -59,17 +69,6 @@ Create a pull request to the main repository
 
 ## Credits
 This project was created by Team Indi-Shop. The Team Members are 
-
-Names - Github Username.
-<br> 
-
-1.Govind - GovindPullagura
-<br> 
-2.Nandhan - nanksi.
-<br> 
-3.Manju Sai - rsaimanjunathnaik083.
-<br> 
-4.Vibhor - winwithvibhor.
 
 License
 This project is licensed under the MIT License. See the LICENSE file for details.
