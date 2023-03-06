@@ -29,7 +29,7 @@ This project was created by Team Indi-Shop. The Team Members are
 <br> 
 4.Vibhor -  _(Admin Panel, Authentication Logic)_
 
-Installation
+### Installation
 To install and run this project on your local machine, follow these steps:
 
 Clone the repository using git clone https://github.com/GovindPullagura/aware-carriage-7836.git
@@ -37,6 +37,17 @@ Navigate to the project directory using cd indi_shop
 Install the dependencies using npm install
 Start the development server using npm start
 This will start the development server at http://localhost:3000.
+
+### Required Dependencies:
+   - json-server
+   - axios
+   - redux
+   - react-redux
+   - redux-thunk
+   - react-router-dom
+   - @chakra-ui/react @emotion/react @emotion/styled framer-motion
+   - react-icons
+   - @types/react-redux - for typescript
 
 Features:
 Indi Shop offers a range of features to users, including:
