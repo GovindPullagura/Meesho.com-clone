@@ -16,13 +16,13 @@ Indi Shop has been built using the following technologies:
 This project was created by Team Indi-Shop. The Team Members are 
 <br>
 
-1.Govind - GovindPullagura _(all products page, product details page, cart page)_
+1.Govind - _(all products page, product details page, cart page)_
 <br> 
-2.Nandhan - nanksi. _(landing page, navbar, footer)_
+2.Nandhan -  _(landing page, navbar, footer)_
 <br> 
-3.Manju Sai - rsaimanjunathnaik083. _(signup/login page, checkout page)_
+3.Manju Sai - _(signup/login page, checkout page)_
 <br> 
-4.Vibhor - winwithvibhor. _(Admin Panel, Authentication Logic)_
+4.Vibhor -  _(Admin Panel, Authentication Logic)_
 
 Installation
 To install and run this project on your local machine, follow these steps:
