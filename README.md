@@ -11,8 +11,11 @@ Indi Shop has been built using the following technologies:
 5. Render.com: A popular backend-as-a-service platform that provides authentication, database, and hosting services.
 6. Vercel: A popular platform for client side deployment
 
+
+
 ### Client Side Deployment : https://indi-shop.vercel.app/
 ### Server Side Deployment : https://indishop.onrender.com/
+
 
 ## Credits
 This project was created by Team Indi-Shop. The Team Members are 
