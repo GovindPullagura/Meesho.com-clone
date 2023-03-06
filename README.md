@@ -59,7 +59,7 @@ Indi Shop offers a range of features to users using following APIs:
        - GET /:id : get a product by its ID
        
    - Cart:
-       - __ __ post to the cart.
+       - __ POST / : __ post to the cart.
        - DELETE /:id : delete a product from the cart
 
    - Admin Panel:
