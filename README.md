@@ -52,17 +52,15 @@ This will start the development server at http://localhost:3000.
 ### APIs:
 Indi Shop offers a range of features to users using following APIs:
 
+- Base Url: "https://indishop.onrender.com"
+
+   - Products:
+       - GET / : get all products
+       - GET /:id : get a product by its ID
+
    - Admin Panel:
-       - Base Url: "https://indishop.onrender.com"
-       - Get Products :
-       axios
-      .get(`${BASE_URL}/products`, {
-        params: {
-          _page: page,
-          _sort: sort,
-          _order: order,
-        },
-      })
+       - PATCH /:id : update a product by its ID
+       - DELETE /:id : delete a product
 
 
 
