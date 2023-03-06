@@ -66,6 +66,3 @@ Create a new branch for your feature or bug fix using git checkout -b your-featu
 Make your changes and commit them using git commit -am 'Add some feature'
 Push your changes to your fork using git push origin your-feature-branch
 Create a pull request to the main repository
-
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
