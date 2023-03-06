@@ -55,16 +55,16 @@ Indi Shop offers a range of features to users using following APIs:
 - Base Url: "https://indishop.onrender.com"
 
    - Products:
-       - GET / : get all products
-       - GET /:id : get a product by its ID
+       - __GET / :__ get all products
+       - __GET /:id :__ get a product by its ID
        
    - Cart:
        -  __POST / :__  post to the cart.
-       - DELETE /:id : delete a product from the cart
+       - __DELETE /:id :__ delete a product from the cart
 
    - Admin Panel:
-       - PATCH /:id : update a product by its ID
-       - DELETE /:id : delete a product
+       - __PATCH /:id :__ update a product by its ID
+       - __DELETE /:id :__ delete a product
 
 
 
