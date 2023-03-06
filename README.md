@@ -9,7 +9,7 @@ Indi Shop has been built using the following technologies:
 - React Router: A popular routing library for React.
 - Chakra-UI: A popular UI component library for React.
 - Render.com: A popular backend-as-a-service platform that provides authentication, database, and hosting services.
-- Vercel: A popular platform for client side deployment
+- Vercel: A popular platform for client side (front-end) deployment.
 
 
 
