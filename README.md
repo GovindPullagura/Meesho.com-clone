@@ -1,9 +1,6 @@
 # Indi Shop
 Indi Shop is an e-commerce platform that is a clone of the popular Indian e-commerce website meesho.com. This platform has been built using React and Redux, and is designed to provide an easy-to-use, mobile-friendly shopping experience for users.
 
-### Client Side Deployment : https://indi-shop.vercel.app/
-### Server Side Deployment : https://indishop.onrender.com/
-
 ## Technologies Used
 Indi Shop has been built using the following technologies:
 
@@ -12,6 +9,10 @@ Indi Shop has been built using the following technologies:
 3. React Router: A popular routing library for React.
 4. Chakra-UI: A popular UI component library for React.
 5. Render.com: A popular backend-as-a-service platform that provides authentication, database, and hosting services.
+6. Vercel: A popular platform for client side deployment
+
+### Client Side Deployment : https://indi-shop.vercel.app/
+### Server Side Deployment : https://indishop.onrender.com/
 
 ## Credits
 This project was created by Team Indi-Shop. The Team Members are 
