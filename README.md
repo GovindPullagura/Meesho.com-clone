@@ -27,7 +27,7 @@ This project was created by Team Indi-Shop. The Team Members are
 <br> 
 3.Manju Sai - _(signup/login page, checkout page)_
 <br> 
-4.Vibhor -  _(Admin Panel, Authentication Logic)_
+4.Vibhor -  _(Admin Panel, Authentication Logic, documentation)_
 
 ### Installation
 To install and run this project on your local machine, follow these steps:
