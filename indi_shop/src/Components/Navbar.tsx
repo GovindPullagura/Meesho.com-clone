@@ -153,7 +153,8 @@ const Navbar = () => {
             </PopoverContent>
           </Popover>
 
-          <Button
+          <Button 
+          onClick={() => navigate("/supplier")}
             colorScheme="none"
             color="black"
             fontSize={{
