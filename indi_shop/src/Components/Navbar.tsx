@@ -26,6 +26,7 @@ import { SlBag } from "react-icons/sl";
 import { GrUserAdmin } from "react-icons/gr";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import SearchBar from "./SearchBar";
 
 const Navbar = () => {
   // @ts-ignore
@@ -75,24 +76,9 @@ const Navbar = () => {
             }}
           />
         </Link>
-        <InputGroup
-          width={{
-            base: "50px",
-            md: "200px",
-            lg: "400px",
-          }}
-        >
-          <Input
-            type="text"
-            placeholder="Try Saree, Kurti"
-            id="search"
-            h="40px"
-            onChange={(e) => handleSearch(e)}
-          />
-          <InputLeftElement>
-            <CiSearch size={"30px"} color="#707070" />
-          </InputLeftElement>
-        </InputGroup>
+
+        <SearchBar />
+
         <HStack divider={<StackDivider borderColor="gray.200" h="70px" />}>
           <Popover trigger={"hover"}>
             <PopoverTrigger>
@@ -153,8 +139,8 @@ const Navbar = () => {
             </PopoverContent>
           </Popover>
 
-          <Button 
-          onClick={() => navigate("/supplier")}
+          <Button
+            onClick={() => navigate("/supplier")}
             colorScheme="none"
             color="black"
             fontSize={{
