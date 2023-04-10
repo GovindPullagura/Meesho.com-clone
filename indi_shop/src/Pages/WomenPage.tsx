@@ -15,7 +15,7 @@ import {
 import React, { Dispatch, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { axiosObj, effectParams, initData, product, state } from "../constants";
+import { axiosObj, initData, product, state } from "../constants";
 // import { RootState } from "../Redux/store";
 import { addToCart, getWomenData } from "../Redux/WomenReducer/action";
 import ProductCard from "../Components/ProductCard";
@@ -50,7 +50,7 @@ const WomenPage = () => {
   const [category, setCategory] = useState<string[]>(initCategory || []);
 
   const [page, setPage] = useState<number>(1);
-  const [itemsPerPage, setItemsPerPage] = useState<number>(12);
+  const itemsPerPage = 12;
 
   const handleCategory = (e: React.ChangeEvent<HTMLInputElement>) => {
     let categories: string[] = [...category];
