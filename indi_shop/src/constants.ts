@@ -35,14 +35,15 @@ export type state = {
 };
 
 export type paramsObj = {
-  colour: string[] | [];
-  category: string[] | [];
-  size: string[] | [];
-  brand: string[] | [];
+  colour?: string[] | [];
+  category?: string[] | [];
+  size?: string[] | [];
+  brand?: string[] | [];
   _sort?: string | null;
   _order?: string | null;
-  _page: number;
-  _limit: number;
+  _page?: number;
+  _limit?: number;
+  q?: string;
 };
 
 export type effectParams = {
