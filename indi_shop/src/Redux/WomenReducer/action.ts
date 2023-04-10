@@ -40,7 +40,7 @@ export const getWomenData = (params: axiosObj) => (dispatch: Dispatch<any>) => {
   axios
     .get(`https://indishop.onrender.com/women`, params)
     .then((res: AxiosResponse<product[]>) => {
-      console.log(res.data);
+      // console.log(res.data);
       dispatch(getReqSuccessAction(res.data));
     })
     .catch((err) => dispatch(getReqFailAction()));

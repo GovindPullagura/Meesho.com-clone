@@ -41,6 +41,8 @@ export type paramsObj = {
   brand: string[] | [];
   _sort?: string | null;
   _order?: string | null;
+  _page: number;
+  _limit: number;
 };
 
 export type effectParams = {
@@ -49,6 +51,7 @@ export type effectParams = {
   size: string[] | [];
   brand: string[] | [];
   order?: string;
+  page?: number;
 };
 
 export type axiosObj = {

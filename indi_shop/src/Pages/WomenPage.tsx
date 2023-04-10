@@ -22,6 +22,7 @@ import ProductCard from "../Components/ProductCard";
 import { useLocation, useSearchParams } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import { Footer } from "../Components/Footer";
+import ProductPagination from "../Components/ProductPagination";
 
 const WomenPage = () => {
   // getting the data from store:
@@ -30,6 +31,8 @@ const WomenPage = () => {
   const { isLoading, isError, products }: initData = useSelector(
     (store: state) => store.womenData
   );
+
+  // console.log("products:", products);
 
   // Settings to filter the data:
   const location = useLocation();
@@ -45,6 +48,9 @@ const WomenPage = () => {
 
   const initCategory: string[] = searchParams.getAll("category");
   const [category, setCategory] = useState<string[]>(initCategory || []);
+
+  const [page, setPage] = useState<number>(1);
+  const [itemsPerPage, setItemsPerPage] = useState<number>(12);
 
   const handleCategory = (e: React.ChangeEvent<HTMLInputElement>) => {
     let categories: string[] = [...category];
@@ -99,6 +105,15 @@ const WomenPage = () => {
     setOrder(e.target.value);
   };
 
+  //Page change
+  const handlePageChange = (pageNumber: number) => {
+    setPage(pageNumber);
+  };
+
+  console.log("Products:", products);
+
+  // console.log("currentProducts:", currentProducts.length);
+
   // Obj is according to axios docs:
   let obj: axiosObj = {
     params: {
@@ -108,15 +123,29 @@ const WomenPage = () => {
       brand: searchParams.getAll("brand"),
       _sort: searchParams.get("order") && "price",
       _order: searchParams.get("order"),
+      _page: page,
+      _limit: itemsPerPage,
     },
   };
 
   useEffect(() => {
-    let params: effectParams = { colour, category, size, brand };
+    let params: any = { colour, category, size, brand };
     order && (params.order = order);
+    page && (params.page = page);
+    console.log("params:", params);
+
     setSearchParams(params);
     dispatch(getWomenData(obj));
-  }, [colour, order, category, size, brand, location.search]);
+  }, [
+    colour,
+    order,
+    category,
+    size,
+    brand,
+    location.search,
+    page,
+    itemsPerPage,
+  ]);
 
   const handleAdd = (data: product) => {
     dispatch(addToCart(data));
@@ -392,6 +421,15 @@ const WomenPage = () => {
         )}
         <Spacer />
       </Flex>
+      <Box mt={10}>
+        <ProductPagination
+          itemsPerPage={itemsPerPage}
+          totalItems={products.length}
+          page={page}
+          onPageChange={handlePageChange}
+        />
+      </Box>
+
       <Footer />
     </Box>
   );
