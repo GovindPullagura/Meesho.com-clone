@@ -110,14 +110,7 @@ const WomenPage = () => {
     setPage(pageNumber);
   };
 
-  const indexOfLastProduct = page * itemsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - itemsPerPage;
-  const currentProducts = products.slice(
-    indexOfFirstProduct,
-    indexOfLastProduct
-  );
-
-  console.log("currentProducts:", currentProducts);
+  console.log("Products:", products);
 
   // console.log("currentProducts:", currentProducts.length);
 
@@ -394,7 +387,7 @@ const WomenPage = () => {
           <Heading>Loading...</Heading>
         ) : isError ? (
           <Heading>Something went wrong...</Heading>
-        ) : currentProducts.length === 0 ? (
+        ) : products.length === 0 ? (
           <Box alignItems={"center"} ml="10%" mt="15%">
             <Image
               w="60%"
@@ -418,7 +411,7 @@ const WomenPage = () => {
             ) : isError ? (
               <Heading>Something went wrong...</Heading>
             ) : (
-              currentProducts.map((el) => (
+              products.map((el) => (
                 <GridItem key={el.id}>
                   <ProductCard {...el} handleAdd={() => handleAdd(el)} />
                 </GridItem>

@@ -108,13 +108,6 @@ const MenPage = () => {
     setPage(pageNumber);
   };
 
-  const indexOfLastProduct = page * itemsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - itemsPerPage;
-  const currentProducts = products.slice(
-    indexOfFirstProduct,
-    indexOfLastProduct
-  );
-
   // Obj is according to axios docs:
   let obj: axiosObj = {
     params: {
@@ -397,7 +390,7 @@ const MenPage = () => {
             ) : isError ? (
               <Heading>Something went wrong...</Heading>
             ) : (
-              currentProducts.map((el) => (
+              products.map((el) => (
                 <GridItem key={el.id}>
                   <ProductCard {...el} handleAdd={() => handleAdd(el)} />
                 </GridItem>
