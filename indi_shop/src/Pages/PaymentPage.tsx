@@ -12,7 +12,7 @@ import {
 import { CheckCircleIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
 import AuthNav from "../Components/AuthNav";
-import { Dispatch, useEffect } from "react";
+import { Dispatch, useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { initData, state } from "../constants";
@@ -23,6 +23,11 @@ import { Footer } from "../Components/Footer";
 
 export const PaymentPage = () => {
   const navigate = useNavigate();
+
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+  const [pincode, setPincode] = useState("");
 
   const dispatch: Dispatch<any> = useDispatch();
   const { isLoading, isError, products, cart }: initData = useSelector(
@@ -36,6 +41,7 @@ export const PaymentPage = () => {
 
   // @ts-ignore
   let userData = JSON.parse(localStorage.getItem("user"));
+  console.log("userData:", userData);
   let cartObj = { user: userData.name, products: cart, total: totalPrice };
   // console.log(totalPrice);
 
@@ -134,7 +140,7 @@ export const PaymentPage = () => {
               fontSize={{ base: "8", sm: "10", md: "16", lg: "18" }}
               fontWeight="semibold"
             >
-              Price Detailes
+              Price Details
             </Text>
             <Text
               m="2"

@@ -49,11 +49,11 @@ const SearchBar = () => {
         q: search,
       },
     };
-    console.log(search);
+    // console.log(search);
     dispatch(getAllProductData(obj));
   };
 
-  console.log("products:", products);
+  // console.log("products:", products);
 
   useEffect(() => {
     if (search.length) {

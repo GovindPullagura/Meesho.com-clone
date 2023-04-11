@@ -21,20 +21,39 @@ import {
   FormLabel,
   Input,
   HStack,
+  useDisclosure,
+  DrawerFooter,
+  DrawerBody,
+  DrawerHeader,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerOverlay,
+  Drawer,
 } from "@chakra-ui/react";
 import { AddressCard } from "../Components/AddressCard";
 import AuthNav from "../Components/AuthNav";
 // import { useNavigate } from "react-router-dom";
-import { Dispatch, useEffect } from "react";
+import { Dispatch, useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { initData, state } from "../constants";
 import { getcartData } from "../Redux/WomenReducer/action";
 import Navbar from "../Components/Navbar";
 import { Footer } from "../Components/Footer";
+import { AddIcon } from "@chakra-ui/icons";
 
 export const AddressPage = () => {
   //   const navigate = useNavigate();
+
+  const [name, setName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [address, setAddress] = useState("");
+  const [pincode, setPincode] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const firstField = useRef();
 
   const dispatch: Dispatch<any> = useDispatch();
   const { isLoading, isError, products, cart }: initData = useSelector(
@@ -49,6 +68,8 @@ export const AddressPage = () => {
   //   @ts-ignore
   const user = JSON.parse(localStorage.getItem("user"));
   const { addresses } = user;
+  console.log("user:", user);
+  console.log("addresses:", addresses);
 
   useEffect(() => {
     dispatch(getcartData);
@@ -61,83 +82,111 @@ export const AddressPage = () => {
       <Navbar />
       <Box display="flex" mt="10px">
         <Box w="600px" mt="15px" ml="350px">
-          <Text
-            textAlign="left"
-            fontWeight="semibold"
-            pl="20px"
-            textDecoration="underline"
-            fontSize={{ base: "12", sm: "18", md: "22", lg: "20" }}
-          >
-            Select Delivery Address
-          </Text>
-          <Text textAlign="start" pt="7px" pl="22px" fontSize="12px">
-            PAY IN CASH
-          </Text>
-          <Box height="300px">
-            {/* Form Display  */}
-            <Box mt="0" ml="370px">
-              <Menu>
-                <MenuButton as={Button} colorScheme="white" color="#f43397">
-                  + ADD NEW ADDRESS
-                </MenuButton>
-                <MenuList>
-                  <MenuGroup>
-                    <Flex
-                      minH={"50vh"}
-                      w="350px"
-                      align={"center"}
-                      justify={"center"}
-                    >
-                      <Stack spacing={8} mx={"auto"} maxW={"lg"}>
-                        <Stack align={"center"}>
-                          <Heading fontSize={"2xl"} textAlign={"center"}>
-                            ADD ADDRESS
-                          </Heading>
-                        </Stack>
-                        <Box>
-                          <Stack spacing={3}>
-                            <HStack>
-                              <Box>
-                                <FormControl isRequired>
-                                  <Input type="text" placeholder="Name" />
-                                </FormControl>
-                                <FormLabel>Address</FormLabel>
-                                <FormControl>
-                                  <Input
-                                    type="text"
-                                    placeholder="House no./ Building Name"
-                                  />
-                                </FormControl>
-                                <FormControl>
-                                  <Input
-                                    type="text"
-                                    placeholder="Road Name/ Area / Colony"
-                                  />
-                                </FormControl>
-                                <FormControl>
-                                  <Input type="text" placeholder="Pincode" />
-                                </FormControl>
-                              </Box>
-                            </HStack>
-                            <Stack spacing={10} pt={2}>
-                              <Button
-                                loadingText="Submitting"
-                                size="lg"
-                                bg={"#f43397"}
-                                color={"white"}
-                              >
-                                Save Address
-                              </Button>
-                            </Stack>
-                          </Stack>
-                        </Box>
-                      </Stack>
-                    </Flex>
-                  </MenuGroup>
-                </MenuList>
-              </Menu>
-            </Box>
+          <Box>
+            <Text
+              textAlign="left"
+              fontWeight="semibold"
+              pl="20px"
+              textDecoration="underline"
+              fontSize={{ base: "12", sm: "18", md: "22", lg: "20" }}
+            >
+              Select Delivery Address
+            </Text>
+            <Text textAlign="start" pt="7px" pl="22px" fontSize="12px">
+              PAY IN CASH
+            </Text>
+          </Box>
 
+          {/* Form Display  */}
+          <Box mt="0" ml="370px">
+            <Button leftIcon={<AddIcon />} colorScheme="pink" onClick={onOpen}>
+              ADD NEW ADDRESS
+            </Button>
+            <Drawer
+              isOpen={isOpen}
+              placement="right"
+              // initialFocusRef={firstField}
+              onClose={onClose}
+            >
+              <DrawerOverlay />
+              <DrawerContent>
+                <DrawerCloseButton />
+                <DrawerHeader borderBottomWidth="1px">ADD ADDRESS</DrawerHeader>
+
+                <DrawerBody>
+                  <Stack spacing="24px">
+                    <form>
+                      <Stack spacing={3}>
+                        <FormControl id="name">
+                          <FormLabel>Name</FormLabel>
+                          <Input
+                            type="text"
+                            value={name}
+                            onChange={(event) => setName(event.target.value)}
+                          />
+                        </FormControl>
+
+                        <FormControl id="phoneNumber">
+                          <FormLabel>Phone Number</FormLabel>
+                          <Input
+                            type="tel"
+                            value={phoneNumber}
+                            onChange={(event) =>
+                              setPhoneNumber(event.target.value)
+                            }
+                          />
+                        </FormControl>
+
+                        <FormControl id="address">
+                          <FormLabel>Address</FormLabel>
+                          <Input
+                            type="text"
+                            value={address}
+                            onChange={(event) => setAddress(event.target.value)}
+                          />
+                        </FormControl>
+
+                        <FormControl id="pincode">
+                          <FormLabel>Pincode</FormLabel>
+                          <Input
+                            type="number"
+                            value={pincode}
+                            onChange={(event) => setPincode(event.target.value)}
+                          />
+                        </FormControl>
+
+                        <FormControl id="city">
+                          <FormLabel>City</FormLabel>
+                          <Input
+                            type="text"
+                            value={city}
+                            onChange={(event) => setCity(event.target.value)}
+                          />
+                        </FormControl>
+
+                        <FormControl id="state">
+                          <FormLabel>State</FormLabel>
+                          <Input
+                            type="text"
+                            value={state}
+                            onChange={(event) => setState(event.target.value)}
+                          />
+                        </FormControl>
+                      </Stack>
+                    </form>
+                  </Stack>
+                </DrawerBody>
+
+                <DrawerFooter borderTopWidth="1px">
+                  <Button variant="outline" mr={3} onClick={onClose}>
+                    Cancel
+                  </Button>
+                  <Button colorScheme="pink">Submit</Button>
+                </DrawerFooter>
+              </DrawerContent>
+            </Drawer>
+          </Box>
+          <Box height="300px">
             {/* Address Card  */}
             <Box
               w="90%"
